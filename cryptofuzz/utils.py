@@ -5,10 +5,8 @@ import hmac
 import random
 from hashlib import sha256 as SHA256, sha512 as SHA512, new as NEW
 import ecdsa
-from b58 import b58encode, b58encode_check, b58decode_check, b58decode
-from bit import Key
+from bs58 import b58encode, b58encode_check, b58decode_check, b58decode
 from mnemonic import Mnemonic
-from bit.format import bytes_to_wif
 from assest import (
     MAIN_DIGEST_RMD160,
     MAIN_PREFIX,
