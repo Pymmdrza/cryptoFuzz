@@ -15,5 +15,7 @@ __all__: list = [
     "__description__",
     "assest",
     "bs58",
-    "utils"
+    "utils",
+    "hd",
+    "Wallet"
 ]

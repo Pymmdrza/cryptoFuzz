@@ -3,7 +3,8 @@ from hashlib import sha256
 from typing import Mapping, Union
 from assest import (
     BITCOIN_ALPHABET as ALPHABET,
-    RIPPLE_ALPHABET as XRP_ALPHABET
+    RIPPLE_ALPHABET as XRP_ALPHABET,
+    BASE58_ALPHABET
 )
 
 
@@ -134,3 +135,17 @@ def b58decode_check(
         raise ValueError("Invalid checksum")
 
     return result
+
+
+def base58_encode(num):
+    num = int(num, 16)
+    encoded = ''
+    while num:
+        num, remainder = divmod(num, 58)
+        encoded = BASE58_ALPHABET[remainder] + encoded
+    return encoded
+
+def base58_check_encode(payload, prefix=0x00):
+    payload = bytes([prefix]) + payload
+    checksum = sha256(sha256(payload).digest()).digest()[:4]
+    return base58_encode(payload.hex() + checksum.hex())
