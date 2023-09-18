@@ -1,7 +1,7 @@
 from functools import lru_cache
 from hashlib import sha256
 from typing import Mapping, Union
-from assest import (
+from .asset import (
     BITCOIN_ALPHABET as ALPHABET,
     RIPPLE_ALPHABET as XRP_ALPHABET,
     BASE58_ALPHABET

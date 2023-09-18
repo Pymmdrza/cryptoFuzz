@@ -1,67 +1,44 @@
-import os
-import binascii
-import ecdsa
 import hashlib
-import base58
+import struct
+import binascii
+
+BASE58_ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
 
 
-def generate_xprv():
-    seed = os.urandom(64)
-    return "xprv" + binascii.hexlify(seed).decode('utf-8')
+def base58encode(num):
+    """Encode a number using Base58."""
+    if num == 0:
+        return BASE58_ALPHABET[0]
+    arr = []
+    while num:
+        num, rem = divmod(num, 58)
+        arr.append(BASE58_ALPHABET[rem])
+    arr.reverse()
+    return ''.join(arr)
 
 
-def xprv_to_private_key(xprv):
-    return binascii.unhexlify(xprv[4:])[:32]  # Take the first 32 bytes as the private key
+def base58encodeCheck(prefix, payload):
+    """Encode a byte string using Base58 with a 4-byte checksum."""
+    s = prefix + payload
+    raw = hashlib.sha256(hashlib.sha256(s).digest()).digest()[:4]
+    return base58encode(int.from_bytes(s + raw, 'big'))
 
 
-def double_sha256(data):
-    return hashlib.sha256(hashlib.sha256(data).digest()).digest()
+def byte_to_xprv(byte_code):
+    # Default chain code
+    chain_code = bytes.fromhex("0000000000000000000000000000000000000000000000000000000000000000")
+    # Main map xprv
+    xprv_version = b'\x04\x88\xAD\xE4'  # for bitcoin version
+    depth = b'\x00'  # zero depth
+    parent_fingerprint = b'\x00\x00\x00\x00'  # main key
+    child_number = struct.pack('>L', 0)  # child number for main key
+    key = b'\x00' + byte_code  # 0x00 + private key
+
+    xprv_main = xprv_version + depth + parent_fingerprint + child_number + chain_code + key
+
+    return base58encodeCheck(b"", xprv_main)
 
 
-def ripemd160(data):
-    h = hashlib.new('ripemd160')
-    h.update(data)
-    return h.digest()
-
-
-def private_key_to_public_key(private_key):
-    sk = ecdsa.SigningKey.from_string(private_key, curve=ecdsa.SECP256k1)
-    return sk.get_verifying_key()
-
-
-def public_key_to_address(pubkey, compressed=True):
-    # Get x and y coordinates from the public key
-    x = pubkey.pubkey.point.x()
-    y = pubkey.pubkey.point.y()
-
-    if compressed:
-        if y & 1:
-            pubkey_bytes = b'\x03' + x.to_bytes(32, 'big')
-        else:
-            pubkey_bytes = b'\x02' + x.to_bytes(32, 'big')
-    else:
-        pubkey_bytes = b'\x04' + x.to_bytes(32, 'big') + y.to_bytes(32, 'big')
-
-    hashed_pubkey = ripemd160(double_sha256(pubkey_bytes))
-    address_bytes = b'\x00' + hashed_pubkey
-    checksum = double_sha256(address_bytes)[:4]
-
-    return base58.b58encode(address_bytes + checksum).decode('utf-8')
-
-
-def main():
-    xprv = generate_xprv()
-    print("XPRV:", xprv)
-
-    private_key = xprv_to_private_key(xprv)
-    public_key = private_key_to_public_key(private_key)
-
-    compressed_address = public_key_to_address(public_key, compressed=True)
-    uncompressed_address = public_key_to_address(public_key, compressed=False)
-
-    print("Compressed Address:", compressed_address)
-    print("Uncompressed Address:", uncompressed_address)
-
-
-if __name__ == "__main__":
-    main()
+# Test
+byte_code = binascii.unhexlify("c37c299bb6d7ab2c9a2e6da66e9b69404b25bb209e377e9f6a37f1f3e7c2928c")
+print(byte_to_xprv(byte_code))

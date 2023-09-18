@@ -2,14 +2,20 @@ import binascii
 import os, re, hashlib
 import hmac
 import random
+import struct
+
 import ecdsa
 from .bs58 import b58encode, b58encode_check, b58decode_check, b58decode, base58_check_encode, base58_encode
 from mnemonic import Mnemonic
-from .assest import (
+from .asset import (
     MAIN_DIGEST_RMD160,
     MAX_PRIVATE_KEY,
     MAIN_PREFIX,
     MAIN_SUFFIX,
+    ZERO_BASE_NET,
+    VERSION_NETWORK,
+    BASE58_ALPHABET,
+    FINGERPRINT_RMD160,
     COMPRESSED_PREFIX,
     COMPRESSED_PREFIX2,
     UNCOMPRESSED_PREFIX,
@@ -17,7 +23,7 @@ from .assest import (
 )
 
 
-class Generate:
+class Generator:
     def __init__(self):
         super().__init__()
 
@@ -38,6 +44,9 @@ class Generate:
         seed = os.urandom(32)
         return "xprv" + binascii.hexlify(seed).decode('utf-8')
 
+    def generate_binary(self):
+        return "".join(random.choice("01") for _ in range(256))
+
     def generate_entropy(self, entropy_bits=256):
         entropy = os.urandom(entropy_bits // 8)
         checksum = hashlib.sha256(entropy).digest()[0]
@@ -49,19 +58,21 @@ class Generate:
         return " ".join(random.choices(characters, k=size)).lower()
 
 
-class Convert:
+class Convertor:
     def __init__(self):
         super().__init__()
-        self.gen = Generate()
+        self.gen = Generator()
 
-    def double_sha256(self, data): return hashlib.sha256(hashlib.sha256(data).digest()).digest()
+    def double_sha256(self, data):
+        return hashlib.sha256(hashlib.sha256(data).digest()).digest()
 
     def mne_to_seed(self, mnemonic, password=""):
         salt = ("mnemonic" + password).encode('utf-8')
         seed = hashlib.pbkdf2_hmac('sha512', mnemonic.encode('utf-8'), salt, 2048)
         return seed[:64]
 
-    def hex_to_bytes(self, hexed): return bytes.fromhex(hexed)
+    def hex_to_bytes(self, hexed):
+        return bytes.fromhex(hexed)
 
     def byte_to_hex(self, seed):
         privatekey_int = int.from_bytes(hashlib.sha256(seed).digest(), byteorder='big')
@@ -113,7 +124,8 @@ class Convert:
         return self.pub_to_bytes(pubkey, compress).hex()
 
     def byte_to_mne(self, byte: bytes):
-        return Mnemonic("english").to_mnemonic(byte[:32])
+        seed = byte[:32]
+        return Mnemonic("english").to_mnemonic(seed)
 
     def byte_to_wif(self, private_key, compress=True):
         PREFIX = MAIN_PREFIX
@@ -128,6 +140,38 @@ class Convert:
         WIF = b58encode(EXTENDED_KEY + CHECKSUM)
 
         return WIF.decode('utf-8')
+
+    def base58encode(self, num):
+        """Encode a number using Base58."""
+        if num == 0:
+            return BASE58_ALPHABET[0]
+        arr = []
+        while num:
+            num, rem = divmod(num, 58)
+            arr.append(BASE58_ALPHABET[rem])
+        arr.reverse()
+        return ''.join(arr)
+
+    def base58encodeCheck(self, prefix, payload):
+        s = prefix + payload
+        raw = hashlib.sha256(hashlib.sha256(s).digest()).digest()[:4]
+        return self.base58encode(int.from_bytes(s + raw, 'big'))
+
+    def byte_to_xprv(self, byte_code: bytes) -> str:
+        chain_code = bytes.fromhex(ZERO_BASE_NET)
+        child_number = struct.pack('>L', 0)  # child number for main key
+        key = MAIN_DIGEST_RMD160 + byte_code  # 0x00 + private key
+
+        xprv_main = VERSION_NETWORK + MAIN_DIGEST_RMD160 + FINGERPRINT_RMD160 + child_number + chain_code + key
+        decode_main = self.base58encodeCheck(b"", xprv_main)
+        return "xprv" + decode_main
+
+    def byte_to_addr(self, seedBytes, compress=False):
+        _, pub = self.byte_to_keys(seedBytes)
+        if compress:
+            return self.pub_to_addr(pub, True)
+        else:
+            return self.pub_to_addr(pub, False)
 
     def pass_To_addr(self, passphrase, compress=False):
         priv_key_hex = hashlib.sha256(passphrase.encode()).hexdigest()
@@ -147,6 +191,7 @@ class Convert:
         address = base58_check_encode(ripemd160.digest())
         return "1" + address
 
+
     def xprv_to_bytes(self, xprv):
         return binascii.unhexlify(xprv[4:])[:32]
 
@@ -158,4 +203,21 @@ class Convert:
         else:
             return self.pub_to_addr(pub, False)
 
+    def xprv_to_pub(self, xprv, compress: bool = False):
+        seed = self.xprv_to_bytes(xprv)
+        pub = self.bytes_to_pub(seed)
+        if compress:
+            return self.pub_to_addr(pub, True)
+        else:
+            return self.pub_to_addr(pub, False)
 
+    def xprv_to_wif(self, xprv, compress: bool = False):
+        seed = self.xprv_to_bytes(xprv)
+        if compress:
+            return self.byte_to_wif(seed, True)
+        else:
+            return self.byte_to_wif(seed, False)
+
+    def xprv_to_mne(self, xprv):
+        seed = self.xprv_to_bytes(xprv)
+        return self.byte_to_mne(seed)
