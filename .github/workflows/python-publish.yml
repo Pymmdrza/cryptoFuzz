@@ -1,26 +1,27 @@
-name: Python package
+name: Run cryptofuzz command
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches:
+      - CLI
 
 jobs:
-  build:
-
+  run-command:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
-    - name: Install dependencies
+        python-version: 3.9
+
+    - name: Run install script
       run: |
-        python3 -m pip install --upgrade pip
-        pip3 install pytest
-    - name: Run tests
-      run: |
-        pytest
+        chmod +x install.sh
+        ./install.sh
+
+    - name: Execute cryptofuzz command
+      run: python cryptofuzz --generate --total 10
+
