@@ -1,24 +1,181 @@
 # CryptoFuzz
 ---
 
-### installation
+## Installing & Quick Use
 
-cryptoFuzz Python Package for Generate and Converting Wallet Private Key and Mnemonic for Address Bitcoin
+### Windows
+
+On Windows, you can install CryptoFuzz using the following pip command:
 
 ```bash
-# on windows
 pip install cryptofuzz
+```
 
-# on Linux
+### Linux & Mac
+
+On Linux and macOS, you should use pip3 for installation:
+
+```bash
 pip3 install cryptofuzz
 ```
 
-or for download manual:
+### Git
+
+To use the latest version from the source, you can clone the CryptoFuzz repository:
+
+1. Clone the repository:
+
 ```bash
 git clone https://github.com/Pymmdrza/cryptofuzz
+```
+
+2. Navigate to the cloned directory:
+
+```bash
 cd cryptofuzz
+```
+
+3. Install the package:
+
+### Windows
+
+You can either run the `install.bat` or `install` command:
+
+```bash
+./install.bat
+# or
 ./install
 ```
+
+### Linux & Mac
+
+On Linux and Mac, you can use the following commands to install:
+
+```bash
+bash install.sh
+# or simply:
+./install.sh
+```
+
+**Note:** If you face any permission issues on Linux, make the script executable using:
+
+```bash
+sudo chmod +x install.sh
+```
+---
+### CLI
+
+generated and converted private key (hex) , bytes (seed), wif compressed and uncompressed and mnemonic , Root Key (xprv) , XPUB, Decimal (Number) , Public Key and Binary To Compressed and Uncompressed Bitcoin Address :
+
+- Generated Option : `--generate` and `-g`
+- Total Generated and convereted Key Option: `--total`, `-t` (integer/number type)
+- Saved all Details and full information to `JSON file (OutputFile.json)` option `--save` and `-s`
+this example just generated `1000` key without save details
+```shell
+# windows
+python cryptofuzz --generate --total 1000
+# linux & mac
+python3 cryptofuzz --generate --total 1000
+```
+example Generated `1000` Key and saved to `OutputFile.json`:
+```shell
+# windows
+python cryptofuzz -g -t 1000 -s
+# linux & mac
+python3 cryptofuzz --generate --total 1000 --save
+# or can use : -g -t 1000 -s
+```
+**Run this command anywhere in your system (in any Path folder) Saved `OutputFile.json`**
+
+
+create with CryptoFuzz, you can see from the `example` section with the following `cryptofuzz-example` command in your terminal:
+
+
+#### Generated example Private Key From CLI `cryptofuzz-example` :
+
+
+all option command for windows `python cryptofuzz-example OPTION` and Linux or Mac `python3 cryptofuzz-example OPTION` :
+
+- Generated `private key` (hex) & Converted : `python cryptofuzz-example privatekey`
+- Generated `bytes` & Converted : `python cryptofuzz-example bytes`
+- Generated `mnemonic` & Converted : `python cryptofuzz-example mnemonic`
+- Generated `wif` & Converted : `python cryptofuzz-example wif`
+- Generated `binary` & Converted : `python cryptofuzz-example binary`
+- Generated Root Key (`xprv`) & Converted : `python cryptofuzz-example xprv`
+- Generated `decimal` & Converted : `python cryptofuzz-example decimal`
+
+Generated and Converted Private Key (HEX) To another cryptocurrency:
+- Generated Private Key (Hex) and Converted To Ethereum Address [Example command]:
+```shell
+# windows
+python cryptofuzz-example ethereum
+# linux and macOs:
+python3 cryptofuzz-example ethereum
+```
+- Generated Private Key (Hex) and Converted To bitcoin Address [Example command]:
+```shell
+# windows
+python cryptofuzz-example bitcoin
+# linux and macOs:
+python3 cryptofuzz-example bitcoin
+```
+- Generated Private Key (Hex) and Converted To dash Address [Example command]:
+```shell
+# windows
+python cryptofuzz-example dash
+# linux and macOs:
+python3 cryptofuzz-example dash
+```
+- Generated Private Key (Hex) and Converted To dogecoin Address [Example command]:
+```shell
+# windows
+python cryptofuzz-example dogecoin
+# linux and macOs:
+python3 cryptofuzz-example dogecoin
+```
+- Generated Private Key (Hex) and Converted To digibyte Address [Example command]:
+```shell
+# windows
+python cryptofuzz-example digibyte
+# linux and macOs:
+python3 cryptofuzz-example digibyte
+```
+- Generated Private Key (Hex) and Converted To Bitcoin Gold Address [Example command]:
+```shell
+# windows
+python cryptofuzz-example bitcoingold
+# linux and macOs:
+python3 cryptofuzz-example bitcoingold
+```
+- Generated Private Key (Hex) and Converted To qtum Address [Example command]:
+```shell
+# windows
+python cryptofuzz-example qtum
+# linux and macOs:
+python3 cryptofuzz-example qtum
+```
+- Generated Private Key (Hex) and Converted To zcash Address [Example command]:
+```shell
+# windows
+python cryptofuzz-example zcash
+# linux and macOs:
+python3 cryptofuzz-example zcash
+```
+- Generated Private Key (Hex) and Converted To Ravencoin Address [Example command]:
+```shell
+# windows
+python cryptofuzz-example rvn
+# linux and macOs:
+python3 cryptofuzz-example rvn
+```
+- Generated Private Key (Hex) and Converted To Litecoin Address [Example command]:
+```shell
+# windows
+python cryptofuzz-example litecoin
+# linux and macOs:
+python3 cryptofuzz-example litecoin
+```
+
 ---
 
 ### Private Key
