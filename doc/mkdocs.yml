@@ -1,0 +1,45 @@
+site_name: CryptoFuzz
+site_description: 'Documentation for CryptoFuzz'
+site_author: 'Pymmdrza@gmail.com'
+repo_url: 'https://github.com/Pymmdrza/cryptofuzz'
+nav:
+    - Home: '/'
+    - document: 'https://github.com/Pymmdrza/cryptoFuzz'
+    - Bug Tracking: 'https://github.com/Pymmdrza/cryptoFuzz/issues'
+    - Pull Requests: 'https://github.com/Pymmdrza/cryptoFuzz/pulls'
+    - Source: 'https://github.com/Pymmdrza/cryptoFuzz'
+    - Mmdrza.Com: 'https://mmdrza.com'
+
+theme:
+    name: 'material'
+    features:
+        - navigation.top
+        - navigation.tabs
+        - navigation.tabs.sticky
+        - navigation.sections
+        - navigation.tracking
+        - navigation.expand
+        - navigation.path
+        - navigation.instant.prefetch
+        - navigation.instant
+        - toc.follow
+        - search.suggest
+    palette:
+        # Palette toggle for light mode
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          toggle:
+            icon: material/brightness-7
+            name: Switch to dark mode
+
+        # Palette toggle for dark mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          toggle:
+            icon: material/brightness-4
+            name: Switch to light mode
+
+docs_dir: '../cryptoFuzz'
+plugins:
+  - search
+
