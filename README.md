@@ -1,13 +1,9 @@
 # CryptoFuzz
 ---
 
-[Installation](#installation) | [Example](/example) | [Donate](#donate) | [Contact](#contact)
-
----
-
 ### installation
 
-cryptofuzz Python Package for Generate and Converting Wallet Private Key and Mnemonic for Address Bitcoin
+cryptoFuzz Python Package for Generate and Converting Wallet Private Key and Mnemonic for Address Bitcoin
 
 ```bash
 # on windows
@@ -25,7 +21,7 @@ sudo apt-get install -y autoconf automake build-essential libffi-dev libtool pkg
 
 or for download manual:
 ```bash
-git clone https://github.com/cryptofuzz/cryptofuzz
+git clone https://github.com/Pymmdrza/cryptofuzz
 cd cryptofuzz
 make
 ```
