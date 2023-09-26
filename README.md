@@ -13,17 +13,11 @@ pip install cryptofuzz
 pip3 install cryptofuzz
 ```
 
-if problem on installing on linux / debian :
-```bash
-sudo apt-get update&&sudo apt-get upgrade -y
-sudo apt-get install -y autoconf automake build-essential libffi-dev libtool pkg-config python3-dev
-```
-
 or for download manual:
 ```bash
 git clone https://github.com/Pymmdrza/cryptofuzz
 cd cryptofuzz
-make
+./install
 ```
 ---
 
