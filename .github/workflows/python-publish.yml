@@ -3,7 +3,7 @@ name: Run cryptofuzz command
 on:
   push:
     branches:
-      - CLI
+      - main
 
 jobs:
   run-command:
