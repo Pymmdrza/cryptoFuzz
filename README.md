@@ -1,9 +1,11 @@
 # CryptoFuzz
 ---
 
-## Installing & Quick Use
+## Installing
 
-### Windows
+### pip / pip3
+
+#### Windows
 
 On Windows, you can install CryptoFuzz using the following pip command:
 
@@ -11,7 +13,7 @@ On Windows, you can install CryptoFuzz using the following pip command:
 pip install cryptofuzz
 ```
 
-### Linux & Mac
+#### Linux & Mac
 
 On Linux and macOS, you should use pip3 for installation:
 
@@ -37,7 +39,7 @@ cd cryptofuzz
 
 3. Install the package:
 
-### Windows
+#### Windows
 
 You can either run the `install.bat` or `install` command:
 
@@ -47,7 +49,7 @@ You can either run the `install.bat` or `install` command:
 ./install
 ```
 
-### Linux & Mac
+#### Linux & Mac
 
 On Linux and Mac, you can use the following commands to install:
 
@@ -64,6 +66,8 @@ sudo chmod +x install.sh
 ```
 ---
 ### CLI
+
+#### cryptofuzz
 
 generated and converted private key (hex) , bytes (seed), wif compressed and uncompressed and mnemonic , Root Key (xprv) , XPUB, Decimal (Number) , Public Key and Binary To Compressed and Uncompressed Bitcoin Address :
 
@@ -91,7 +95,9 @@ python3 cryptofuzz --generate --total 1000 --save
 create with CryptoFuzz, you can see from the `example` section with the following `cryptofuzz-example` command in your terminal:
 
 
-#### Generated example Private Key From CLI `cryptofuzz-example` :
+#### cryptofuzz-example
+
+Generated example Private Key From CLI `cryptofuzz-example` :
 
 
 all option command for windows `python cryptofuzz-example OPTION` and Linux or Mac `python3 cryptofuzz-example OPTION` :
