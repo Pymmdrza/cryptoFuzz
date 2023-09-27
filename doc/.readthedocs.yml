@@ -1,0 +1,24 @@
+# .readthedocs.yml
+
+# Project Information
+project:
+  name: Blockthon Documentation
+  description: 'Blockthon - a fast and easy Python package for generating private keys and mnemonics, converting seeds, binary, and decimals.'
+  version: stable
+  language: en
+  programming_language: python
+  repository_url: 'https://github.com/Blockthon/Blockthon'
+  documentation_type: mkdocs
+
+# Build Configuration
+formats: all
+python:
+  version: 3.8
+
+# Documentation Configuration
+mkdocs:
+  config_file: mkdocs.yml
+
+# Advanced Configuration
+build:
+  image: latest
