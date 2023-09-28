@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="cryptoFuzz a fast and easy Python package for generating private keys and mnemonics, converting seeds, binary, and decimals." /><meta name="author" content="Pymmdrza@gmail.com" /><link rel="canonical" href="https://pymmdrza.gitbook.io/cryptoFuzz/" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>CryptoFuzz</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = "/cryptoFuzz/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> CryptoFuzz
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installing-quick-use">Installing &amp; Quick Use</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#linux-mac">Linux &amp; Mac</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#git">Git</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#windows_1">Windows</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#linux-mac_1">Linux &amp; Mac</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cli">CLI</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#generated-example-private-key-from-cli-cryptofuzz-example">Generated example Private Key From CLI cryptofuzz-example :</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#private-key">Private Key</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mnemonic">Mnemonic</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bytes-seed">Bytes (seed)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#binary">Binary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#private-key-to-bytes">Private Key To Bytes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#private-key-to-wif">Private Key To Wif</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#private-key-to-mnemonic">Private Key To Mnemonic</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#private-key-to-binary">Private Key To Binary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#private-key-to-decimal-int">Private Key To Decimal (int)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#private-key-to-address">Private Key To Address</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#private-key-to-public-key">Private Key To Public Key</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bytes-to-private-key">Bytes To Private Key</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bytes-to-mnemonic">Bytes To mnemonic</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bytes-to-wif">Bytes To Wif</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bytes-to-public-key">Bytes To Public Key</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bytes-to-dec-number">Bytes to Dec (number)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wif-to-public-key">Wif To Public Key</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wif-to-mnemonic">Wif To Mnemonic</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#passphrase-to-compress-and-uncompress-address">Passphrase To Compress And Uncompress Address</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#generated-xprv-and-xpub">Generated XPRV and XPUB :</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contact">contact</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#donate">Donate:</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/Pymmdrza/cryptoFuzz">document</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/Pymmdrza/cryptoFuzz/issues">Bug Tracking</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/Pymmdrza/cryptoFuzz/pulls">Pull Requests</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/Pymmdrza/cryptoFuzz">Source</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://mmdrza.com">Mmdrza.Com</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">CryptoFuzz</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Pymmdrza/cryptoFuzz?query=root/path/docs/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cryptofuzz">CryptoFuzz<a class="headerlink" href="#cryptofuzz" title="Permanent link">&para;</a></h1>
+<hr />
+<h3 id="installing-quick-use">Installing &amp; Quick Use<a class="headerlink" href="#installing-quick-use" title="Permanent link">&para;</a></h3>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<p>On Windows, you can install CryptoFuzz using the following pip command:</p>
+<pre><code class="language-bash">pip install cryptofuzz
+</code></pre>
+<h3 id="linux-mac">Linux &amp; Mac<a class="headerlink" href="#linux-mac" title="Permanent link">&para;</a></h3>
+<p>On Linux and macOS, you should use pip3 for installation:</p>
+<pre><code class="language-bash">pip3 install cryptofuzz
+</code></pre>
+<h3 id="git">Git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h3>
+<p>To use the latest version from the source, you can clone the CryptoFuzz repository:</p>
+<ol>
+<li>Clone the repository:</li>
+</ol>
+<pre><code class="language-bash">git clone https://github.com/Pymmdrza/cryptofuzz
+</code></pre>
+<ol start="2">
+<li>Navigate to the cloned directory:</li>
+</ol>
+<pre><code class="language-bash">cd cryptofuzz
+</code></pre>
+<ol start="3">
+<li>Install the package:</li>
+</ol>
+<h3 id="windows_1">Windows<a class="headerlink" href="#windows_1" title="Permanent link">&para;</a></h3>
+<p>You can either run the <code>install.bat</code> or <code>install</code> command:</p>
+<pre><code class="language-bash">./install.bat
+# or
+./install
+</code></pre>
+<h3 id="linux-mac_1">Linux &amp; Mac<a class="headerlink" href="#linux-mac_1" title="Permanent link">&para;</a></h3>
+<p>On Linux and Mac, you can use the following commands to install:</p>
+<pre><code class="language-bash">bash install.sh
+# or simply:
+./install.sh
+</code></pre>
+<p><strong>Note:</strong> If you face any permission issues on Linux, make the script executable using:</p>
+<pre><code class="language-bash">sudo chmod +x install.sh
+</code></pre>
+<hr />
+<h3 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h3>
+<p>generated and converted private key (hex) , bytes (seed), wif compressed and uncompressed and mnemonic , Root Key (xprv) , XPUB, Decimal (Number) , Public Key and Binary To Compressed and Uncompressed Bitcoin Address :</p>
+<ul>
+<li>Generated Option : <code>--generate</code> and <code>-g</code></li>
+<li>Total Generated and convereted Key Option: <code>--total</code>, <code>-t</code> (integer/number type)</li>
+<li>Saved all Details and full information to <code>JSON file (OutputFile.json)</code> option <code>--save</code> and <code>-s</code>
+this example just generated <code>1000</code> key without save details</li>
+</ul>
+<pre><code class="language-shell"># windows
+python cryptofuzz --generate --total 1000
+# linux &amp; mac
+python3 cryptofuzz --generate --total 1000
+</code></pre>
+<p>example Generated <code>1000</code> Key and saved to <code>OutputFile.json</code>:</p>
+<pre><code class="language-shell"># windows
+python cryptofuzz -g -t 1000 -s
+# linux &amp; mac
+python3 cryptofuzz --generate --total 1000 --save
+# or can use : -g -t 1000 -s
+</code></pre>
+<p><strong>Run this command anywhere in your system (in any Path folder) Saved <code>OutputFile.json</code></strong></p>
+<p>create with CryptoFuzz, you can see from the <code>example</code> section with the following <code>cryptofuzz-example</code> command in your terminal:</p>
+<h4 id="generated-example-private-key-from-cli-cryptofuzz-example">Generated example Private Key From CLI <code>cryptofuzz-example</code> :<a class="headerlink" href="#generated-example-private-key-from-cli-cryptofuzz-example" title="Permanent link">&para;</a></h4>
+<p>all option command for windows <code>python cryptofuzz-example OPTION</code> and Linux or Mac <code>python3 cryptofuzz-example OPTION</code> :</p>
+<ul>
+<li>Generated <code>private key</code> (hex) &amp; Converted : <code>python cryptofuzz-example privatekey</code></li>
+<li>Generated <code>bytes</code> &amp; Converted : <code>python cryptofuzz-example bytes</code></li>
+<li>Generated <code>mnemonic</code> &amp; Converted : <code>python cryptofuzz-example mnemonic</code></li>
+<li>Generated <code>wif</code> &amp; Converted : <code>python cryptofuzz-example wif</code></li>
+<li>Generated <code>binary</code> &amp; Converted : <code>python cryptofuzz-example binary</code></li>
+<li>Generated Root Key (<code>xprv</code>) &amp; Converted : <code>python cryptofuzz-example xprv</code></li>
+<li>Generated <code>decimal</code> &amp; Converted : <code>python cryptofuzz-example decimal</code></li>
+</ul>
+<p>Generated and Converted Private Key (HEX) To another cryptocurrency:
+- Generated Private Key (Hex) and Converted To Ethereum Address [Example command]:</p>
+<pre><code class="language-shell"># windows
+python cryptofuzz-example ethereum
+# linux and macOs:
+python3 cryptofuzz-example ethereum
+</code></pre>
+<ul>
+<li>Generated Private Key (Hex) and Converted To bitcoin Address [Example command]:</li>
+</ul>
+<pre><code class="language-shell"># windows
+python cryptofuzz-example bitcoin
+# linux and macOs:
+python3 cryptofuzz-example bitcoin
+</code></pre>
+<ul>
+<li>Generated Private Key (Hex) and Converted To dash Address [Example command]:</li>
+</ul>
+<pre><code class="language-shell"># windows
+python cryptofuzz-example dash
+# linux and macOs:
+python3 cryptofuzz-example dash
+</code></pre>
+<ul>
+<li>Generated Private Key (Hex) and Converted To dogecoin Address [Example command]:</li>
+</ul>
+<pre><code class="language-shell"># windows
+python cryptofuzz-example dogecoin
+# linux and macOs:
+python3 cryptofuzz-example dogecoin
+</code></pre>
+<ul>
+<li>Generated Private Key (Hex) and Converted To digibyte Address [Example command]:</li>
+</ul>
+<pre><code class="language-shell"># windows
+python cryptofuzz-example digibyte
+# linux and macOs:
+python3 cryptofuzz-example digibyte
+</code></pre>
+<ul>
+<li>Generated Private Key (Hex) and Converted To Bitcoin Gold Address [Example command]:</li>
+</ul>
+<pre><code class="language-shell"># windows
+python cryptofuzz-example bitcoingold
+# linux and macOs:
+python3 cryptofuzz-example bitcoingold
+</code></pre>
+<ul>
+<li>Generated Private Key (Hex) and Converted To qtum Address [Example command]:</li>
+</ul>
+<pre><code class="language-shell"># windows
+python cryptofuzz-example qtum
+# linux and macOs:
+python3 cryptofuzz-example qtum
+</code></pre>
+<ul>
+<li>Generated Private Key (Hex) and Converted To zcash Address [Example command]:</li>
+</ul>
+<pre><code class="language-shell"># windows
+python cryptofuzz-example zcash
+# linux and macOs:
+python3 cryptofuzz-example zcash
+</code></pre>
+<ul>
+<li>Generated Private Key (Hex) and Converted To Ravencoin Address [Example command]:</li>
+</ul>
+<pre><code class="language-shell"># windows
+python cryptofuzz-example rvn
+# linux and macOs:
+python3 cryptofuzz-example rvn
+</code></pre>
+<ul>
+<li>Generated Private Key (Hex) and Converted To Litecoin Address [Example command]:</li>
+</ul>
+<pre><code class="language-shell"># windows
+python cryptofuzz-example litecoin
+# linux and macOs:
+python3 cryptofuzz-example litecoin
+</code></pre>
+<hr />
+<h3 id="private-key">Private Key<a class="headerlink" href="#private-key" title="Permanent link">&para;</a></h3>
+<p>generated random private key without repeat :</p>
+<pre><code class="language-python">from cryptofuzz import getPrivateKey
+
+Privatekey = getPrivateKey()
+</code></pre>
+<hr />
+<h3 id="mnemonic">Mnemonic<a class="headerlink" href="#mnemonic" title="Permanent link">&para;</a></h3>
+<p>Generated random mnemonic with standard size :</p>
+<pre><code class="language-python">from cryptofuzz import getMnemonic
+# default size 12 . can use [12, 18, 24]
+mnemonicString = getMnemonic(size=12)
+</code></pre>
+<hr />
+<h3 id="bytes-seed">Bytes (seed)<a class="headerlink" href="#bytes-seed" title="Permanent link">&para;</a></h3>
+<p>Generated Random Bytes Without Repeat :</p>
+<pre><code class="language-python">from cryptofuzz import getBytes
+byte = getBytes()
+</code></pre>
+<hr />
+<h3 id="binary">Binary<a class="headerlink" href="#binary" title="Permanent link">&para;</a></h3>
+<p>Generate Random Binary Without repeat <code>0/1</code>:</p>
+<pre><code class="language-python">from cryptofuzz import getBin
+
+binary_string = getBin(256)
+</code></pre>
+<hr />
+<h3 id="private-key-to-bytes">Private Key To Bytes<a class="headerlink" href="#private-key-to-bytes" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">from cryptofuzz import PrivateKey_To_Bytes
+
+privatekey = Wallet.getPrivateKey()
+# Convert Private Key HEX To Bytes SEED
+byte = Wallet.PrivateKey_To_Bytes(privatekey)
+
+</code></pre>
+<hr />
+<h3 id="private-key-to-wif">Private Key To Wif<a class="headerlink" href="#private-key-to-wif" title="Permanent link">&para;</a></h3>
+<p>generated private key (hex) and convert to wif compressed and uncompressed.</p>
+<pre><code class="language-python">from cryptofuzz import getPrivateKey, PrivateKey_To_Wif
+
+privatekey = getPrivateKey()
+# Convert Private key Hex To Wif
+#  compressed
+wif_compress = PrivateKey_To_Wif(privatekey, compress=True)
+# wif Uncompressed
+wif_uncompress = PrivateKey_To_Wif(privatekey, compress=False)
+</code></pre>
+<hr />
+<h3 id="private-key-to-mnemonic">Private Key To Mnemonic<a class="headerlink" href="#private-key-to-mnemonic" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">from cryptofuzz import getPrivateKey, PrivateKey_To_Mnemonic
+
+privatekey = getPrivateKey()
+# convert private key [hex] To mnemonic
+mnemonic_string = PrivateKey_To_Mnemonics(privatekey)
+# for size mnemonic can use [12, 18, 24]
+</code></pre>
+<hr />
+<h3 id="private-key-to-binary">Private Key To Binary<a class="headerlink" href="#private-key-to-binary" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">from cryptofuzz import getPrivateKey, PrivateKey_To_Binary
+
+privatekey = getPrivateKey()
+
+# convert hex to bin
+binary_string = PrivateKey_To_Binary(privatekey)
+</code></pre>
+<hr />
+<h3 id="private-key-to-decimal-int">Private Key To Decimal (int)<a class="headerlink" href="#private-key-to-decimal-int" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">from cryptofuzz import getPrivateKey, PrivateKey_To_Decimal
+
+privatekey = getPrivateKey()
+# convert private key hex to number (dec)
+dec = PrivateKey_To_Decimal(privatekey)
+</code></pre>
+<hr />
+<h3 id="private-key-to-address">Private Key To Address<a class="headerlink" href="#private-key-to-address" title="Permanent link">&para;</a></h3>
+<p>convert private key <code>Hex</code> to Compress and Uncompress Address</p>
+<pre><code class="language-python">from cryptofuzz import getPrivateKey, PrivateKey_To_Wif
+
+privatekey = getPrivateKey()
+# convert private key to compress address
+compress_Address = PrivateKey_To_Address(privatekey, compress=True)
+# convert to uncompress address
+uncompress_Address = PrivateKey_To_Address(privatekey, compress=False)
+</code></pre>
+<hr />
+<h3 id="private-key-to-public-key">Private Key To Public Key<a class="headerlink" href="#private-key-to-public-key" title="Permanent link">&para;</a></h3>
+<p>generated private key and convert to public key compress and uncompress:</p>
+<pre><code class="language-python">from cryptofuzz import getPrivateKey, PrivateKey_To_PublicKey
+
+privatekey = getPrivateKey()
+# convert to public key uncompress
+public_uncompress = PrivateKey_To_PublicKey(privatekey)
+# convert private key hex to public key compress
+public_compress = PrivateKey_To_PublicKey(privatekey, compress=True)
+</code></pre>
+<hr />
+<h3 id="bytes-to-private-key">Bytes To Private Key<a class="headerlink" href="#bytes-to-private-key" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">from cryptofuzz import getBytes, Bytes_To_PrivateKey
+
+byte = getBytes()
+# convert bytes to hex (private key)
+privatekey = Bytes_To_PrivateKey(byte)
+</code></pre>
+<h3 id="bytes-to-mnemonic">Bytes To mnemonic<a class="headerlink" href="#bytes-to-mnemonic" title="Permanent link">&para;</a></h3>
+<p>convert bytes to mnemonic with default <code>size=12</code></p>
+<p>can use standard sizr: <code>12, 18, 24</code></p>
+<pre><code class="language-python">from cryptofuzz import getBytes, Bytes_To_Mnemonic
+
+byte = getBytes()
+# Convert bytes to mnemonic with default size 12
+mnemonic_words = Bytes_To_Mnemonic(byte)
+</code></pre>
+<hr />
+<h3 id="bytes-to-wif">Bytes To Wif<a class="headerlink" href="#bytes-to-wif" title="Permanent link">&para;</a></h3>
+<p>convert bytes To wif Compress and uncompress:</p>
+<pre><code class="language-python">from cryptofuzz import getBytes, Bytes_To_Wif
+
+byte = getBytes()
+# compress wif
+wif_compress = Bytes_To_Wif(byte, compress=True)
+#uncompress Wif
+wif_uncompress = Bytes_To_Wif(byte, compress=False)
+</code></pre>
+<hr />
+<h3 id="bytes-to-public-key">Bytes To Public Key<a class="headerlink" href="#bytes-to-public-key" title="Permanent link">&para;</a></h3>
+<p>convert bytes to public key compress and uncompress</p>
+<pre><code class="language-python">from cryptofuzz import getBytes, Bytes_To_PublicKey
+
+byte = getBytes()
+# compress Publickey
+Pub_compress = Bytes_To_PublicKey(byte, compress=True)
+#uncompress Wif
+Pub_uncompress = Bytes_To_PublicKey(byte, compress=False)
+</code></pre>
+<hr />
+<h3 id="bytes-to-dec-number">Bytes to Dec (number)<a class="headerlink" href="#bytes-to-dec-number" title="Permanent link">&para;</a></h3>
+<p>convert bytes to decimal number</p>
+<pre><code class="language-python">from cryptofuzz import getBytes, Bytes_To_Decimal
+
+byte = getBytes()
+#convert to integer 
+dec = Bytes_To_Decimal(byte)
+</code></pre>
+<hr />
+<h3 id="wif-to-public-key">Wif To Public Key<a class="headerlink" href="#wif-to-public-key" title="Permanent link">&para;</a></h3>
+<p>convert wif to public key compress and uncompress</p>
+<pre><code class="language-python">from cryptofuzz import Wif_To_PublicKey
+
+wif = &quot;WIF_STRING_HERE&quot;
+pub_compress = Wif_To_PublicKey(wif, compress=True)
+pub_uncompress = Wif_To_PublicKey(wif, compress=False)
+</code></pre>
+<hr />
+<h3 id="wif-to-mnemonic">Wif To Mnemonic<a class="headerlink" href="#wif-to-mnemonic" title="Permanent link">&para;</a></h3>
+<p>convert Wif To Mnemonic With Default <code>size=12</code></p>
+<pre><code class="language-python">from cryptofuzz import Wif_To_Mnemonic
+
+wif = &quot;WIF_STRING_HERE&quot;
+mnemonic_string = Wif_To_Mnemonic(wif)
+</code></pre>
+<hr />
+<h3 id="passphrase-to-compress-and-uncompress-address">Passphrase To Compress And Uncompress Address<a class="headerlink" href="#passphrase-to-compress-and-uncompress-address" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">from cryptofuzz.Wallet import *
+
+passphrase = &quot;Mmdrza.com&quot;
+compress_address = Passphrase_To_Address(passphrase, True)
+uncompress_address = Passphrase_To_Address(passphrase, False)
+
+</code></pre>
+<h3 id="generated-xprv-and-xpub">Generated XPRV and XPUB :<a class="headerlink" href="#generated-xprv-and-xpub" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">from cryptofuzz.Wallet import *
+
+seed = getBytes()
+
+xprv = Bytes_To_XPRV(seed)
+
+xpub = Bytes_To_XPUB(seed)
+
+</code></pre>
+<hr />
+<h3 id="contact">contact<a class="headerlink" href="#contact" title="Permanent link">&para;</a></h3>
+<p>Programmer &amp; Owner : Mmdrza.Com</p>
+<p>Email : PyMmdrza@Gmail.Com</p>
+<p>Github: <a href="https://github.com/Pymmdrza/cryptofuzz">cryptofuzz/cryptofuzz</a></p>
+<p>Document: <a href="https://github.com/Pymmdrza/cryptofuzz">cryptofuzz</a></p>
+<hr />
+<h3 id="donate">Donate:<a class="headerlink" href="#donate" title="Permanent link">&para;</a></h3>
+<p>Bitcoin (BTC): <code>1MMDRZA12xdBLD1P5AfEfvEMErp588vmF9</code></p>
+<p>Ethereum &amp; USDT (ERC20): <code>0x348e3C3b17784AafD7dB67d011b85F838F16E2D1</code></p>
+<p>USDT &amp; TRON (TRC20): <code>TR4mA5quGVHGYS186HKDuArbD8SVssiZVx</code></p>
+<p>Litecoin (LTC): <code>ltc1qtgvxc6na9pxvznu05yys3j5rq9ej6kahe2j50v</code></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright © 2023, Pymmdrza</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Pymmdrza/cryptoFuzz" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2023-09-27 17:10:06.050159+00:00
+-->
