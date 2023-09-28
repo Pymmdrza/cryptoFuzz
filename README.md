@@ -218,9 +218,9 @@ binary_string = getBin(256)
 ```python
 from cryptofuzz import PrivateKey_To_Bytes
 
-privatekey = Wallet.getPrivateKey()
+privatekey = getPrivateKey()
 # Convert Private Key HEX To Bytes SEED
-byte = Wallet.PrivateKey_To_Bytes(privatekey)
+byte = PrivateKey_To_Bytes(privatekey)
 
 ```
 ---
@@ -403,9 +403,9 @@ Programmer & Owner : Mmdrza.Com
 
 Email : PyMmdrza@Gmail.Com
 
-Github: [cryptofuzz/cryptofuzz](https://github.com/Pymmdrza/cryptofuzz)
+Github: [cryptofuzz/cryptofuzz](https://github.com/Pymmdrza/cryptoFuzz)
 
-Document: [cryptofuzz](https://github.com/Pymmdrza/cryptofuzz)
+Document: [cryptofuzz](https://pymmdrza.github.io/cryptoFuzz)
 
 ---
 ### Donate:
