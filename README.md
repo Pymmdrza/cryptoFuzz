@@ -73,16 +73,16 @@ generated and converted private key (hex) , bytes (seed), wif compressed and unc
 this example just generated `1000` key without save details
 ```shell
 # windows
-python cryptofuzz --generate --total 1000
+cryptofuzz --generate --total 1000
 # linux & mac
-python3 cryptofuzz --generate --total 1000
+cryptofuzz --generate --total 1000
 ```
 example Generated `1000` Key and saved to `OutputFile.json`:
 ```shell
 # windows
-python cryptofuzz -g -t 1000 -s
+cryptofuzz -g -t 1000 -s
 # linux & mac
-python3 cryptofuzz --generate --total 1000 --save
+cryptofuzz --generate --total 1000 --save
 # or can use : -g -t 1000 -s
 ```
 **Run this command anywhere in your system (in any Path folder) Saved `OutputFile.json`**
@@ -94,86 +94,86 @@ create with CryptoFuzz, you can see from the `example` section with the followin
 #### Generated example Private Key From CLI `cryptofuzz-example` :
 
 
-all option command for windows `python cryptofuzz-example OPTION` and Linux or Mac `python3 cryptofuzz-example OPTION` :
+all option command for windows `cryptofuzz-example OPTION` and Linux or Mac `cryptofuzz-example OPTION` :
 
-- Generated `private key` (hex) & Converted : `python cryptofuzz-example privatekey`
-- Generated `bytes` & Converted : `python cryptofuzz-example bytes`
-- Generated `mnemonic` & Converted : `python cryptofuzz-example mnemonic`
-- Generated `wif` & Converted : `python cryptofuzz-example wif`
-- Generated `binary` & Converted : `python cryptofuzz-example binary`
-- Generated Root Key (`xprv`) & Converted : `python cryptofuzz-example xprv`
-- Generated `decimal` & Converted : `python cryptofuzz-example decimal`
+- Generated `private key` (hex) & Converted : `cryptofuzz-example privatekey`
+- Generated `bytes` & Converted : `cryptofuzz-example bytes`
+- Generated `mnemonic` & Converted : `cryptofuzz-example mnemonic`
+- Generated `wif` & Converted : `cryptofuzz-example wif`
+- Generated `binary` & Converted : `cryptofuzz-example binary`
+- Generated Root Key (`xprv`) & Converted : `cryptofuzz-example xprv`
+- Generated `decimal` & Converted : `cryptofuzz-example decimal`
 
 Generated and Converted Private Key (HEX) To another cryptocurrency:
 - Generated Private Key (Hex) and Converted To Ethereum Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example ethereum
+cryptofuzz-example ethereum
 # linux and macOs:
-python3 cryptofuzz-example ethereum
+cryptofuzz-example ethereum
 ```
 - Generated Private Key (Hex) and Converted To bitcoin Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example bitcoin
+cryptofuzz-example bitcoin
 # linux and macOs:
-python3 cryptofuzz-example bitcoin
+cryptofuzz-example bitcoin
 ```
 - Generated Private Key (Hex) and Converted To dash Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example dash
+cryptofuzz-example dash
 # linux and macOs:
-python3 cryptofuzz-example dash
+cryptofuzz-example dash
 ```
 - Generated Private Key (Hex) and Converted To dogecoin Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example dogecoin
+cryptofuzz-example dogecoin
 # linux and macOs:
-python3 cryptofuzz-example dogecoin
+cryptofuzz-example dogecoin
 ```
 - Generated Private Key (Hex) and Converted To digibyte Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example digibyte
+cryptofuzz-example digibyte
 # linux and macOs:
-python3 cryptofuzz-example digibyte
+cryptofuzz-example digibyte
 ```
 - Generated Private Key (Hex) and Converted To Bitcoin Gold Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example bitcoingold
+cryptofuzz-example bitcoingold
 # linux and macOs:
-python3 cryptofuzz-example bitcoingold
+cryptofuzz-example bitcoingold
 ```
 - Generated Private Key (Hex) and Converted To qtum Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example qtum
+cryptofuzz-example qtum
 # linux and macOs:
-python3 cryptofuzz-example qtum
+cryptofuzz-example qtum
 ```
 - Generated Private Key (Hex) and Converted To zcash Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example zcash
+cryptofuzz-example zcash
 # linux and macOs:
-python3 cryptofuzz-example zcash
+cryptofuzz-example zcash
 ```
 - Generated Private Key (Hex) and Converted To Ravencoin Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example rvn
+cryptofuzz-example rvn
 # linux and macOs:
-python3 cryptofuzz-example rvn
+cryptofuzz-example rvn
 ```
 - Generated Private Key (Hex) and Converted To Litecoin Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example litecoin
+cryptofuzz-example litecoin
 # linux and macOs:
-python3 cryptofuzz-example litecoin
+cryptofuzz-example litecoin
 ```
 
 ---
