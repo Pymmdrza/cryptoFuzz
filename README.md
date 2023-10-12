@@ -1,5 +1,13 @@
+<div style="display: flex; justify-content: space-between; align-items: center;">
+
+
+<img src="https://raw.githubusercontent.com/Pymmdrza/cryptoFuzz/gh-pages/doc/img/cryptoFuzz_Logo.png" title="Cryptofuzz / Generated and Converted Private and Public Key Very Easy On Python With cryptofuzz" alt="cryptofuzz python cryptography library" width="136" height="136"> 
+
+</div> 
+
 # CryptoFuzz
----
+
+
 
 ## Installing & Quick Use
 
