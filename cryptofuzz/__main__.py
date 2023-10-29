@@ -1,3 +1,4 @@
+from . import Convertor, Generator
 from .Wallet import (
 
     # Conversions related to Binary ------------------------------------------------------------

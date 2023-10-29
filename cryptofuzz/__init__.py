@@ -18,7 +18,7 @@ from .hd import (
 )
 
 # Metadata
-__version__ = "v1.3.6"
+__version__ = "v3.9.6"
 __license__ = "MIT"
 __author__ = "Mohammadreza (MMDRZA)"
 __email__ = "PyMmdrza@gmail.com"

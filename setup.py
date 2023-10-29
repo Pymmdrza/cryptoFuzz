@@ -6,7 +6,7 @@ import os
 
 PACK_NAME = "CryptoFuzz"
 PACK_DESCRIPTION = "Generated and Converted Keys with any Type Foundation from Private Key [WIF Hexed Mnemonic and Binary Bytes seed] in Python"
-PACK_VERSION = "3.9.3"
+PACK_VERSION = "3.9.6"
 PACK_LICENSE = "MIT"
 PACK_AUTHOR = "Mohammadreza (Mmdrza.Com)"
 PACK_EMAIL = "Pymmdrza@gmail.com"

@@ -73,13 +73,66 @@ class Convertor:
     def mne_to_seed(self, mnemonic, password=""):
         salt = ("mnemonic" + password).encode('utf-8')
         seed = hashlib.pbkdf2_hmac('sha512', mnemonic.encode('utf-8'), salt, 2048)
-        return seed[:64]
-    
+        return seed[:32]
+
+    def mne_to_bytes(self, mnemonic):
+        return self.mne_to_seed(mnemonic)
+
+    def mne_to_hex(self, mnemonic):
+        seed = self.mne_to_seed(mnemonic)
+        return self.bytes_to_hex(seed)
+
+    def mne_to_wif(self, mnemonic, compress: bool = False):
+        seed = self.mne_to_seed(mnemonic)
+        return self.bytes_to_wif(seed, compress)
+
+    def mne_to_int(self, mnemonic):
+        seed = self.mne_to_seed(mnemonic)
+        return self.bytes_to_int(seed)
+
+    def mne_to_xpub(self, mnemonic):
+        seed = self.mne_to_seed(mnemonic)
+        return self.bytes_to_xpub(seed)
+
+    def mne_to_xprv(self, mnemonic):
+        seed = self.mne_to_seed(mnemonic)
+        return self.bytes_to_xprv(seed)
+
+    def mne_to_addr(self, mnemonic, compress: bool = False):
+        seed = self.mne_to_seed(mnemonic)
+        return self.bytes_to_addr(seed, compress)
+
+    def mne_to_binary(self, mnemonic):
+        seed = self.mne_to_seed(mnemonic)
+        return self.bytes_to_binary(seed)
+
+    def bytes_to_mne(self, seed):
+        return Mnemonic().to_mnemonic(seed)
+
+    def bytes_to_seed(self, seed):
+        return hashlib.pbkdf2_hmac('sha512', seed, b'mnemonic', 2048)
+
+    def bytes_to_hex(self, seed):
+        return binascii.hexlify(self.bytes_to_seed(seed)).decode('utf-8')
+
     def unHexlify(self, h: str):
         return binascii.unhexlify(h)
     
     def hex_to_bytes(self, hexed):
         return binascii.unhexlify(hexed)
+
+    def hex_to_mne(self, hexed: str) -> str:
+        seed = self.hex_to_bytes(hexed)
+        return self.bytes_to_mne(seed)
+
+    def hex_to_wif(self, hexed, compress: bool = False) -> str:
+        return self.bytes_to_wif(self.hex_to_bytes(hexed), compress)
+
+    def hex_to_xprv(self, hexed: str) -> str:
+        return self.bytes_to_xprv(self.hex_to_bytes(hexed))
+
+    def hex_to_xpub(self, hexed: str) -> str:
+        return self.bytes_to_xpub(self.hex_to_bytes(hexed))
     
     def hex_to_int(self, hexed: str) -> int:
         return int(hexed, 16)
@@ -91,11 +144,14 @@ class Convertor:
             return self.bytes_to_public(self.hex_to_bytes(hexed), False)
     
     def hex_to_addr(self, hexed: str, compress: bool = False) -> str:
-        pub = self.hex_to_pub(hexed)
+        seed = self.hex_to_bytes(hexed)
         if compress:
-            return self.pub_to_addr(pub)
+            return self.bytes_to_addr(seed, True)
         else:
-            return self.pub_to_addr(pub)
+            return self.bytes_to_addr(seed, False)
+
+    def hex_to_binary(self, hexed: str) -> str:
+        return self.bytes_to_binary(self.hex_to_bytes(hexed))
     
     def bytes_to_hex(self, seed):
         privatekey_int = int.from_bytes(hashlib.sha256(seed).digest(), byteorder='big')
@@ -109,7 +165,7 @@ class Convertor:
     def bytes_to_pub(self, seed_bytes: bytes) -> bytes:
         sk = ecdsa.SigningKey.from_string(seed_bytes[:32], curve=ecdsa.SECP256k1)
         vk = sk.get_verifying_key()
-        pub = b'\x02' + vk.to_string()[-32:] if vk.to_string()[-1] % 2 == 0 else b'\x03' + vk.to_string()[-32:]
+        pub = COMPRESSED_PREFIX2 + vk.to_string()[-32:] if vk.to_string()[-1] % 2 == 0 else b'\x03' + vk.to_string()[-32:]
         return pub
     
     def bytes_to_public(self, seed: bytes, compress: bool = True) -> bytes:
@@ -167,7 +223,9 @@ class Convertor:
         return decode_main
     
     def bytes_to_addr(self, seedBytes: bytes, compress: bool = False) -> str:
-        if compress:
+        if len(seedBytes) != 32:
+            seedBytes = seedBytes[:32]
+        elif compress:
             pub = self.bytes_to_public(seedBytes, compress=True)
             return self.pub_to_addr(public_key=pub)
         else:
@@ -234,13 +292,27 @@ class Convertor:
         wif_bytes = b58decode(wif)
         isCompress = wif_bytes[-5] == 0x01 if len(wif_bytes) == 38 else False
         return wif_bytes[1:-5] if isCompress else wif_bytes[1:-4]
-    
+
+    def wif_to_binary(self, wif: str) -> str:
+        pvkBytes = self.wif_to_bytes(wif)
+        return self.bytes_to_binary(pvkBytes)
     def wif_to_addr(self, wif: str, compress: bool = False) -> str:
         pvkBytes = self.wif_to_bytes(wif)
         public_key = self.bytes_to_public(pvkBytes, compress)
         address = self.pub_to_addr(public_key)
         return address
-    
+
+    def wif_to_int(self, wif): return self.bytes_to_int(self.wif_to_bytes(wif))
+
+    def wif_to_hex(self, wif): return self.wif_to_bytes(wif).hex()
+
+    def wif_to_mne(self, wif): return self.bytes_to_mne(self.wif_to_bytes(wif))
+
+    def wif_to_xprv(self, wif): return self.bytes_to_xprv(self.wif_to_bytes(wif))
+
+    def wif_to_xpub(self, wif): return self.bytes_to_xpub(self.wif_to_bytes(wif))
+
+    def wif_to_pub(self, wif): return self.bytes_to_public(self.wif_to_bytes(wif)).hex()
     # ------------------------------------------------------------
     
     def xprv_to_bytes(self, xprv: str):
@@ -286,8 +358,46 @@ class Convertor:
         return bytes([int(chunk, 2) for chunk in chunks])
     
     def int_to_bytes(self, int_dec: int) -> bytes:
-        bytes_length = (int_dec.bit_length() + 7) // 8
-        return int_dec.to_bytes(bytes_length, 'big')
+        return int_dec.to_bytes(32, 'big')
     
     def int_to_hex(self, int_dec: int) -> str:
         return "%064x" % int_dec
+
+    def int_to_mnemonic(self, int_dec: int) -> str:
+        return self.bytes_to_mne(self.int_to_bytes(int_dec))
+
+    def int_to_wif(self, int_dec: int, compress: bool = False) -> str:
+        return self.bytes_to_wif(self.int_to_bytes(int_dec), compress)
+
+    def int_to_xprv(self, int_dec: int) -> str:
+        return self.bytes_to_xprv(self.int_to_bytes(int_dec))
+
+    def int_to_xpub(self, int_dec: int) -> bytes:
+        """
+        Convert int decimal to public key (``bytes``).
+
+        :param int_dec:
+        :type int_dec: int
+        :return:
+        :rtype: bytes
+
+        """
+        return self.bytes_to_xpub(self.int_to_bytes(int_dec))
+
+    def int_to_addr(self, int_dec: int, compress: bool = False) -> str:
+        """
+        Convert int decimal to compress & uncompress address (``str``).
+
+        :param int_dec:
+        :type int_dec: int
+        :param compress:
+        :type compress: bool
+        :return:
+        :rtype: str
+        """
+        return self.bytes_to_addr(self.int_to_bytes(int_dec), compress)
+
+    def int_to_binary(self, int_dec: int) -> str:
+        return self.bytes_to_binary(self.int_to_bytes(int_dec))
+    # ------------------------------------------------------------
+
