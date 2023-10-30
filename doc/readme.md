@@ -1,11 +1,17 @@
+<div style="display: flex; justify-content: space-between; align-items: center;">
+
+
+<img src="https://raw.githubusercontent.com/Pymmdrza/cryptoFuzz/gh-pages/doc/img/cryptoFuzz_Logo.png" title="Cryptofuzz / Generated and Converted Private and Public Key Very Easy On Python With cryptofuzz" alt="cryptofuzz python cryptography library" width="136" height="136"> 
+
+</div> 
+
 # CryptoFuzz
----
 
-## Installing
 
-### pip / pip3
 
-#### Windows
+## Installing & Quick Use
+
+### Windows
 
 On Windows, you can install CryptoFuzz using the following pip command:
 
@@ -13,7 +19,7 @@ On Windows, you can install CryptoFuzz using the following pip command:
 pip install cryptofuzz
 ```
 
-#### Linux & Mac
+### Linux & Mac
 
 On Linux and macOS, you should use pip3 for installation:
 
@@ -39,7 +45,7 @@ cd cryptofuzz
 
 3. Install the package:
 
-#### Windows
+### Windows
 
 You can either run the `install.bat` or `install` command:
 
@@ -49,7 +55,7 @@ You can either run the `install.bat` or `install` command:
 ./install
 ```
 
-#### Linux & Mac
+### Linux & Mac
 
 On Linux and Mac, you can use the following commands to install:
 
@@ -67,8 +73,6 @@ sudo chmod +x install.sh
 ---
 ### CLI
 
-#### cryptofuzz
-
 generated and converted private key (hex) , bytes (seed), wif compressed and uncompressed and mnemonic , Root Key (xprv) , XPUB, Decimal (Number) , Public Key and Binary To Compressed and Uncompressed Bitcoin Address :
 
 - Generated Option : `--generate` and `-g`
@@ -77,16 +81,16 @@ generated and converted private key (hex) , bytes (seed), wif compressed and unc
 this example just generated `1000` key without save details
 ```shell
 # windows
-python cryptofuzz --generate --total 1000
+cryptofuzz --generate --total 1000
 # linux & mac
-python3 cryptofuzz --generate --total 1000
+cryptofuzz --generate --total 1000
 ```
 example Generated `1000` Key and saved to `OutputFile.json`:
 ```shell
 # windows
-python cryptofuzz -g -t 1000 -s
+cryptofuzz -g -t 1000 -s
 # linux & mac
-python3 cryptofuzz --generate --total 1000 --save
+cryptofuzz --generate --total 1000 --save
 # or can use : -g -t 1000 -s
 ```
 **Run this command anywhere in your system (in any Path folder) Saved `OutputFile.json`**
@@ -95,91 +99,89 @@ python3 cryptofuzz --generate --total 1000 --save
 create with CryptoFuzz, you can see from the `example` section with the following `cryptofuzz-example` command in your terminal:
 
 
-#### cryptofuzz-example
-
-Generated example Private Key From CLI `cryptofuzz-example` :
+#### Generated example Private Key From CLI `cryptofuzz-example` :
 
 
-all option command for windows `python cryptofuzz-example OPTION` and Linux or Mac `python3 cryptofuzz-example OPTION` :
+all option command for windows `cryptofuzz-example OPTION` and Linux or Mac `cryptofuzz-example OPTION` :
 
-- Generated `private key` (hex) & Converted : `python cryptofuzz-example privatekey`
-- Generated `bytes` & Converted : `python cryptofuzz-example bytes`
-- Generated `mnemonic` & Converted : `python cryptofuzz-example mnemonic`
-- Generated `wif` & Converted : `python cryptofuzz-example wif`
-- Generated `binary` & Converted : `python cryptofuzz-example binary`
-- Generated Root Key (`xprv`) & Converted : `python cryptofuzz-example xprv`
-- Generated `decimal` & Converted : `python cryptofuzz-example decimal`
+- Generated `private key` (hex) & Converted : `cryptofuzz-example privatekey`
+- Generated `bytes` & Converted : `cryptofuzz-example bytes`
+- Generated `mnemonic` & Converted : `cryptofuzz-example mnemonic`
+- Generated `wif` & Converted : `cryptofuzz-example wif`
+- Generated `binary` & Converted : `cryptofuzz-example binary`
+- Generated Root Key (`xprv`) & Converted : `cryptofuzz-example xprv`
+- Generated `decimal` & Converted : `cryptofuzz-example decimal`
 
 Generated and Converted Private Key (HEX) To another cryptocurrency:
 - Generated Private Key (Hex) and Converted To Ethereum Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example ethereum
+cryptofuzz-example ethereum
 # linux and macOs:
-python3 cryptofuzz-example ethereum
+cryptofuzz-example ethereum
 ```
 - Generated Private Key (Hex) and Converted To bitcoin Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example bitcoin
+cryptofuzz-example bitcoin
 # linux and macOs:
-python3 cryptofuzz-example bitcoin
+cryptofuzz-example bitcoin
 ```
 - Generated Private Key (Hex) and Converted To dash Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example dash
+cryptofuzz-example dash
 # linux and macOs:
-python3 cryptofuzz-example dash
+cryptofuzz-example dash
 ```
 - Generated Private Key (Hex) and Converted To dogecoin Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example dogecoin
+cryptofuzz-example dogecoin
 # linux and macOs:
-python3 cryptofuzz-example dogecoin
+cryptofuzz-example dogecoin
 ```
 - Generated Private Key (Hex) and Converted To digibyte Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example digibyte
+cryptofuzz-example digibyte
 # linux and macOs:
-python3 cryptofuzz-example digibyte
+cryptofuzz-example digibyte
 ```
 - Generated Private Key (Hex) and Converted To Bitcoin Gold Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example bitcoingold
+cryptofuzz-example bitcoingold
 # linux and macOs:
-python3 cryptofuzz-example bitcoingold
+cryptofuzz-example bitcoingold
 ```
 - Generated Private Key (Hex) and Converted To qtum Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example qtum
+cryptofuzz-example qtum
 # linux and macOs:
-python3 cryptofuzz-example qtum
+cryptofuzz-example qtum
 ```
 - Generated Private Key (Hex) and Converted To zcash Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example zcash
+cryptofuzz-example zcash
 # linux and macOs:
-python3 cryptofuzz-example zcash
+cryptofuzz-example zcash
 ```
 - Generated Private Key (Hex) and Converted To Ravencoin Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example rvn
+cryptofuzz-example rvn
 # linux and macOs:
-python3 cryptofuzz-example rvn
+cryptofuzz-example rvn
 ```
 - Generated Private Key (Hex) and Converted To Litecoin Address [Example command]:
 ```shell
 # windows
-python cryptofuzz-example litecoin
+cryptofuzz-example litecoin
 # linux and macOs:
-python3 cryptofuzz-example litecoin
+cryptofuzz-example litecoin
 ```
 
 ---
@@ -224,9 +226,9 @@ binary_string = getBin(256)
 ```python
 from cryptofuzz import PrivateKey_To_Bytes
 
-privatekey = Wallet.getPrivateKey()
+privatekey = getPrivateKey()
 # Convert Private Key HEX To Bytes SEED
-byte = Wallet.PrivateKey_To_Bytes(privatekey)
+byte = PrivateKey_To_Bytes(privatekey)
 
 ```
 ---
@@ -378,6 +380,79 @@ from cryptofuzz import Wif_To_Mnemonic
 wif = "WIF_STRING_HERE"
 mnemonic_string = Wif_To_Mnemonic(wif)
 ```
+### Wif To Private Key:
+convert wif to private key (hex)
+```python
+from cryptofuzz import Convertor
+
+convertor = Convertor()
+wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
+privatekey = convertor.wif_to_hex(wif_string)
+```
+
+### Wif To XPRV
+convert wif key to xprv (root key):
+```python
+from cryptofuzz import Convertor
+
+convertor = Convertor()
+wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
+# root key (xprv)
+xprv = convertor.wif_to_xprv(wif_string)
+```
+
+### Wif To Decimal (integer/number)
+convert wif key to decimal number :
+```python
+from cryptofuzz import Convertor
+
+convertor = Convertor()
+wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
+# dec
+dec = convertor.wif_to_int(wif_string)
+```
+
+### Wif To XPUB
+
+convert wif key to xpub (root public key):
+
+```python
+from cryptofuzz import Convertor
+
+convertor = Convertor()
+wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
+#xpublic key
+xpub = convertor.wif_to_xpub(wif_string)
+```
+
+### Wif To Address
+
+convert wif key to compressed and uncompressed address
+
+```python
+from cryptofuzz import Convertor
+
+convertor = Convertor()
+wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
+# compress
+compress_address = convertor.wif_to_addr(wif_string, True)
+# uncompress
+uncompress_address = convertor.wif_to_addr(wif_string, False)
+```
+
+### Wif To Mnemonic
+
+convert wif key to mnemonic 
+
+```python
+from cryptofuzz import Convertor
+
+convertor = Convertor()
+wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
+# mnemonic 
+mnemonic_str = convertor.wif_to_mne(wif_string)
+```
+
 ---
 ### Passphrase To Compress And Uncompress Address
 ```python
@@ -401,17 +476,22 @@ xpub = Bytes_To_XPUB(seed)
 
 ```
 
+More example follow : [Example](https://github.com/Pymmdrza/cryptoFuzz/tree/main/Example)
+
 ---
 
 ### contact
 
-Programmer & Owner : Mmdrza.Com
+
+Programmer & Owner : Mr. [PyMmdrza](https://github.com/Pymmdrza)
+
+
 
 Email : PyMmdrza@Gmail.Com
 
-Github: [cryptofuzz/cryptofuzz](https://github.com/Pymmdrza/cryptofuzz)
+Github: [cryptofuzz/cryptofuzz](https://github.com/Pymmdrza/cryptoFuzz)
 
-Document: [cryptofuzz](https://github.com/Pymmdrza/cryptofuzz)
+Document: [cryptofuzz](https://pymmdrza.github.io/cryptoFuzz)
 
 ---
 ### Donate:
