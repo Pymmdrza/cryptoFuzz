@@ -14,7 +14,7 @@ from .hd import (
     Qtum,
     Ravencoin,
     Tron,
-    Zcash,
+    Zcash
 )
 
 # Metadata
