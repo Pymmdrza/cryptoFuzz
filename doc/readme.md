@@ -188,293 +188,142 @@ cryptofuzz-example litecoin
 
 ### Private Key
 
-generated random private key without repeat :
+```python
+from cryptofuzz import Convertor, Generator
+# // Convertor and Generator Shortcut
+conv = Convertor()
+gen = Generator()
+# // Generate private key
+privatekey = gen.generate_private_key()
+# // Convert private key To bytes
+seed = conv.hex_to_bytes(privatekey)
+# // Convert private key To mnemonic
+mnemonic = conv.hex_to_mne(privatekey)
+# // Convert private key To wif compress
+wif_compress = conv.hex_to_wif(privatekey, True)
+# // Convert private key To wif uncompress
+wif_uncompress = conv.hex_to_wif(privatekey, False)
+# // Convert private key To decimal number
+dec = conv.hex_to_int(privatekey)
+# // Convert private key To binary
+binary_str = conv.hex_to_binary(privatekey)
+# // Convert private key To xprv
+xprv = conv.hex_to_xprv(privatekey)
+# // Convert private key To xpub
+xpub = conv.hex_to_xpub(privatekey)
+# // Convert private key To compress address
+compress_address = conv.hex_to_addr(privatekey, True)
+# // Convert private key To uncompress address
+uncompress_address = conv.hex_to_addr(privatekey, False)
+```
+
+### Wif 
+
+Convert From Wif 
 
 ```python
-from cryptofuzz import getPrivateKey
+import os
+from cryptofuzz import Convertor
 
-Privatekey = getPrivateKey()
+conv = Convertor()
+
+# // generate byte
+byte = os.urandom(32)
+# // convert Byte To wif
+wif = conv.bytes_to_wif(byte)
+# // wif to mnemonic
+mnemonic = conv.wif_to_mne(wif)
+# // Convert Wif To Hex
+privatekey = conv.wif_to_hex(wif)
+# // Convert bytes To WIF Uncompress
+wif_uncompress = conv.bytes_to_wif(byte, False)
+# // Convert Wif To Decimal Number
+dec = conv.wif_to_int(wif)
+# // Convert Wif To Binary
+binary_str = conv.wif_to_binary(wif)
+# // Convert Wif To xprv
+xprv = conv.wif_to_xprv(wif)
+# // Convert Wif To xpub
+xpub = conv.wif_to_xpub(wif)
+# // Convert Wif To compress address
+compress_address = conv.wif_to_addr(wif, True)
+# // Convert Wif To uncompress address
+uncompress_address = conv.wif_to_addr(wif, False)
+
 ```
----
+
 ### Mnemonic
-Generated random mnemonic with standard size :
-```python
-from cryptofuzz import getMnemonic
-# default size 12 . can use [12, 18, 24]
-mnemonicString = getMnemonic(size=12)
-```
-----
-### Bytes (seed)
 
-Generated Random Bytes Without Repeat :
+Convert From Mnemonic (BIP39)
 
 ```python
-from cryptofuzz import getBytes
-byte = getBytes()
-```
----
-### Binary
-Generate Random Binary Without repeat `0/1`:
+from cryptofuzz import Convertor, Generator
 
-```python
-from cryptofuzz import getBin
+conv = Convertor()
+gen = Generator()
 
-binary_string = getBin(256)
-```
----
-### Private Key To Bytes
-```python
-from cryptofuzz import PrivateKey_To_Bytes
-
-privatekey = getPrivateKey()
-# Convert Private Key HEX To Bytes SEED
-byte = PrivateKey_To_Bytes(privatekey)
-
+# Generate Mnemonic
+mnemonic = gen.generate_mnemonic(12)
+# Convert Mnemonic To Seed Bytes
+seed = conv.mne_to_bytes(mnemonic)
+# Convert Mnemonic To Hex
+privatekey = conv.mne_to_hex(mnemonic)
+# Convert Mnemonic To WIF Compress
+wif_compress = conv.mne_to_wif(mnemonic, True)
+# Convert Mnemonic To WIF Uncompress
+wif_uncompress = conv.mne_to_wif(mnemonic, False)
+# Convert Mnemonic To Decimal Number
+dec = conv.mne_to_int(mnemonic)
+# Convert Mnemonic To Binary
+binary_str = conv.mne_to_binary(mnemonic)
+# Convert Mnemonic To xprv
+xprv = conv.mne_to_xprv(mnemonic)
+# Convert Mnemonic To xpub
+xpub = conv.mne_to_xpub(mnemonic)
+# Convert Mnemonic To compress address
+compress_address = conv.mne_to_addr(mnemonic, True)
+# Convert Mnemonic To uncompress address
+uncompress_address = conv.mne_to_addr(mnemonic, False)
 ```
 ---
-### Private Key To Wif
 
-generated private key (hex) and convert to wif compressed and uncompressed.
-```python
-from cryptofuzz import getPrivateKey, PrivateKey_To_Wif
+### Decimal
 
-privatekey = getPrivateKey()
-# Convert Private key Hex To Wif
-#  compressed
-wif_compress = PrivateKey_To_Wif(privatekey, compress=True)
-# wif Uncompressed
-wif_uncompress = PrivateKey_To_Wif(privatekey, compress=False)
-```
----
-### Private Key To Mnemonic
+Convert From Decimal (Number)
 
 ```python
-from cryptofuzz import getPrivateKey, PrivateKey_To_Mnemonic
+from cryptofuzz import Convertor, Generator
 
-privatekey = getPrivateKey()
-# convert private key [hex] To mnemonic
-mnemonic_string = PrivateKey_To_Mnemonics(privatekey)
-# for size mnemonic can use [12, 18, 24]
-```
----
-### Private Key To Binary
+conv = Convertor()
+gen = Generator()
 
-```python
-from cryptofuzz import getPrivateKey, PrivateKey_To_Binary
 
-privatekey = getPrivateKey()
+# generate random number decimal
+dec = gen.generate_decimal()
+# decimal to mnemonic
+mnemonic = conv.int_to_mnemonic(dec)
+# Convert decimal To Hex
+privatekey = conv.int_to_hex(dec)
+# Convert decimal To WIF Compress
+wif_compress = conv.int_to_wif(dec, True)
+# Convert decimal To WIF Uncompress
+wif_uncompress = conv.int_to_wif(dec, False)
+# Convert Wif To Binary
+binary_str = conv.int_to_binary(dec)
+# Convert Wif To xprv
+xprv = conv.int_to_xprv(dec)
+# Convert Wif To xpub
+xpub = conv.int_to_xpub(dec)
+# Convert Wif To compress address
+compress_address = conv.int_to_addr(dec, True)
+# Convert Wif To uncompress address
+uncompress_address = conv.int_to_addr(dec, False)
 
-# convert hex to bin
-binary_string = PrivateKey_To_Binary(privatekey)
-```
----
-### Private Key To Decimal (int)
-```python
-from cryptofuzz import getPrivateKey, PrivateKey_To_Decimal
-
-privatekey = getPrivateKey()
-# convert private key hex to number (dec)
-dec = PrivateKey_To_Decimal(privatekey)
-```
----
-### Private Key To Address
-
-convert private key `Hex` to Compress and Uncompress Address
-```python
-from cryptofuzz import getPrivateKey, PrivateKey_To_Wif
-
-privatekey = getPrivateKey()
-# convert private key to compress address
-compress_Address = PrivateKey_To_Address(privatekey, compress=True)
-# convert to uncompress address
-uncompress_Address = PrivateKey_To_Address(privatekey, compress=False)
-```
----
-### Private Key To Public Key
-
-generated private key and convert to public key compress and uncompress:
-
-```python
-from cryptofuzz import getPrivateKey, PrivateKey_To_PublicKey
-
-privatekey = getPrivateKey()
-# convert to public key uncompress
-public_uncompress = PrivateKey_To_PublicKey(privatekey)
-# convert private key hex to public key compress
-public_compress = PrivateKey_To_PublicKey(privatekey, compress=True)
-```
----
-### Bytes To Private Key
-```python
-from cryptofuzz import getBytes, Bytes_To_PrivateKey
-
-byte = getBytes()
-# convert bytes to hex (private key)
-privatekey = Bytes_To_PrivateKey(byte)
-```
-### Bytes To mnemonic 
-convert bytes to mnemonic with default `size=12`
-
-can use standard sizr: `12, 18, 24`
-
-```python
-from cryptofuzz import getBytes, Bytes_To_Mnemonic
-
-byte = getBytes()
-# Convert bytes to mnemonic with default size 12
-mnemonic_words = Bytes_To_Mnemonic(byte)
-```
----
-### Bytes To Wif
-convert bytes To wif Compress and uncompress:
-```python
-from cryptofuzz import getBytes, Bytes_To_Wif
-
-byte = getBytes()
-# compress wif
-wif_compress = Bytes_To_Wif(byte, compress=True)
-#uncompress Wif
-wif_uncompress = Bytes_To_Wif(byte, compress=False)
-```
----
-### Bytes To Public Key
-
-convert bytes to public key compress and uncompress
-```python
-from cryptofuzz import getBytes, Bytes_To_PublicKey
-
-byte = getBytes()
-# compress Publickey
-Pub_compress = Bytes_To_PublicKey(byte, compress=True)
-#uncompress Wif
-Pub_uncompress = Bytes_To_PublicKey(byte, compress=False)
-```
----
-### Bytes to Dec (number)
-
-convert bytes to decimal number
-
-```python
-from cryptofuzz import getBytes, Bytes_To_Decimal
-
-byte = getBytes()
-#convert to integer 
-dec = Bytes_To_Decimal(byte)
-```
----
-### Wif To Public Key
-convert wif to public key compress and uncompress
-```python
-from cryptofuzz import Wif_To_PublicKey
-
-wif = "WIF_STRING_HERE"
-pub_compress = Wif_To_PublicKey(wif, compress=True)
-pub_uncompress = Wif_To_PublicKey(wif, compress=False)
-```
----
-### Wif To Mnemonic 
-convert Wif To Mnemonic With Default `size=12`
-```python
-from cryptofuzz import Wif_To_Mnemonic
-
-wif = "WIF_STRING_HERE"
-mnemonic_string = Wif_To_Mnemonic(wif)
-```
-### Wif To Private Key:
-convert wif to private key (hex)
-```python
-from cryptofuzz import Convertor
-
-convertor = Convertor()
-wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
-privatekey = convertor.wif_to_hex(wif_string)
 ```
 
-### Wif To XPRV
-convert wif key to xprv (root key):
-```python
-from cryptofuzz import Convertor
 
-convertor = Convertor()
-wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
-# root key (xprv)
-xprv = convertor.wif_to_xprv(wif_string)
-```
-
-### Wif To Decimal (integer/number)
-convert wif key to decimal number :
-```python
-from cryptofuzz import Convertor
-
-convertor = Convertor()
-wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
-# dec
-dec = convertor.wif_to_int(wif_string)
-```
-
-### Wif To XPUB
-
-convert wif key to xpub (root public key):
-
-```python
-from cryptofuzz import Convertor
-
-convertor = Convertor()
-wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
-#xpublic key
-xpub = convertor.wif_to_xpub(wif_string)
-```
-
-### Wif To Address
-
-convert wif key to compressed and uncompressed address
-
-```python
-from cryptofuzz import Convertor
-
-convertor = Convertor()
-wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
-# compress
-compress_address = convertor.wif_to_addr(wif_string, True)
-# uncompress
-uncompress_address = convertor.wif_to_addr(wif_string, False)
-```
-
-### Wif To Mnemonic
-
-convert wif key to mnemonic 
-
-```python
-from cryptofuzz import Convertor
-
-convertor = Convertor()
-wif_string = "WIF_KEY_COMPRESS_OR_UNCOMPRESS"
-# mnemonic 
-mnemonic_str = convertor.wif_to_mne(wif_string)
-```
 
 ---
-### Passphrase To Compress And Uncompress Address
-```python
-from cryptofuzz.Wallet import *
-
-passphrase = "Mmdrza.com"
-compress_address = Passphrase_To_Address(passphrase, True)
-uncompress_address = Passphrase_To_Address(passphrase, False)
-
-```
-### Generated XPRV and XPUB :
-
-```python
-from cryptofuzz.Wallet import *
-
-seed = getBytes()
-
-xprv = Bytes_To_XPRV(seed)
-
-xpub = Bytes_To_XPUB(seed)
-
-```
 
 More example follow : [Example](https://github.com/Pymmdrza/cryptoFuzz/tree/main/Example)
 
