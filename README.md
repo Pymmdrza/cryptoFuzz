@@ -186,7 +186,23 @@ cryptofuzz-example litecoin
 
 ---
 
+- More example follow : [Example/Source](https://github.com/Pymmdrza/cryptoFuzz/tree/main/Example)
+- [Convert Private key To Bitcoin (All Format) Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-bitcoin 'Private key To Bitcoin (All Format) Address')
+- [Convert Private key To Ethereum Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-ethereum 'Private key To Ethereum Address')
+- [Convert Private key To TRON (TRX) Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-tron-trx 'Private key To TRON (TRX) Address')
+- [Convert Private key To Dogecoin Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-dogecoin 'Private key To Dogecoin Address')
+- [Convert Private key To Litecoin Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-litecoin 'Private key To Litecoin Address ')
+- [Convert Private key To Digibyte Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-digibyte 'Private key To Digibyte')
+- [Convert Private key To DASH Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-dash 'Private key To DASH')
+- [Convert Private key To Bitcoin Gold (BTG) Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-bitcoin-gold 'Private key To Bitcoin Gold')
+- [Convert Private key To Ravencoin (rvn) Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-ravencoin 'Private key To Ravencoin (rvn) Address')
+
+
+---
+
 ### Private Key
+
+More details about private key convert in python with cryptofuzz : [cryptofuzz/Example/Privatekey](https://guide.mmdrza.com/guidelines/cryptofuzz/example/private-key-hex 'cryptofuzz private key hex source code python')
 
 ```python
 from cryptofuzz import Convertor, Generator
@@ -219,7 +235,7 @@ uncompress_address = conv.hex_to_addr(privatekey, False)
 
 ### Wif 
 
-Convert From Wif 
+Convert From Wif ( [More detail and Example](https://guide.mmdrza.com/guidelines/cryptofuzz/example/private-key-wif 'more detail wif convert with cryptofuzz') )
 
 ```python
 import os
@@ -254,7 +270,7 @@ uncompress_address = conv.wif_to_addr(wif, False)
 
 ### Mnemonic
 
-Convert From Mnemonic (BIP39)
+Convert From Mnemonic (BIP39) ( [More Detail](https://guide.mmdrza.com/guidelines/cryptofuzz/example/mnemonic) )
 
 ```python
 from cryptofuzz import Convertor, Generator
@@ -289,7 +305,7 @@ uncompress_address = conv.mne_to_addr(mnemonic, False)
 
 ### Decimal
 
-Convert From Decimal (Number)
+Convert From Decimal (Number) ( [More Detail](https://guide.mmdrza.com/guidelines/cryptofuzz/example/decimal) )
 
 ```python
 from cryptofuzz import Convertor, Generator
@@ -320,13 +336,6 @@ compress_address = conv.int_to_addr(dec, True)
 uncompress_address = conv.int_to_addr(dec, False)
 
 ```
-
-
-
----
-
-More example follow : [Example](https://github.com/Pymmdrza/cryptoFuzz/tree/main/Example)
-
 ---
 
 ### contact
