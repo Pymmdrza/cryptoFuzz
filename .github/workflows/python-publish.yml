@@ -77,7 +77,21 @@ jobs:
     - name: Build package
       run: |
         python setup.py sdist bdist_wheel
+        
+    - name: Get version from setup.py
+      id: get_version
+      run: |
+        VERSION=$(python setup.py --version)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
 
+    - name: Create ZIP file
+      run: |
+        zip -r cryptofuzz-v${{ env.VERSION }}.zip dist/
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: cryptofuzz-v${{ env.VERSION }}.zip
     - name: Publish package to PyPI
       env:
         TWINE_USERNAME: __token__
