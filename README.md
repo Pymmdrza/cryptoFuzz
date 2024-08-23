@@ -7,8 +7,6 @@
 
 # CryptoFuzz
 
-
-
 ## Installing & Quick Use
 
 ### Windows
@@ -70,119 +68,6 @@ bash install.sh
 ```bash
 sudo chmod +x install.sh
 ```
----
-### CLI
-
-generated and converted private key (hex) , bytes (seed), wif compressed and uncompressed and mnemonic , Root Key (xprv) , XPUB, Decimal (Number) , Public Key and Binary To Compressed and Uncompressed Bitcoin Address :
-
-- Generated Option : `--generate` and `-g`
-- Total Generated and convereted Key Option: `--total`, `-t` (integer/number type)
-- Saved all Details and full information to `JSON file (OutputFile.json)` option `--save` and `-s`
-this example just generated `1000` key without save details
-```shell
-# windows
-cryptofuzz --generate --total 1000
-# linux & mac
-cryptofuzz --generate --total 1000
-```
-example Generated `1000` Key and saved to `OutputFile.json`:
-```shell
-# windows
-cryptofuzz -g -t 1000 -s
-# linux & mac
-cryptofuzz --generate --total 1000 --save
-# or can use : -g -t 1000 -s
-```
-**Run this command anywhere in your system (in any Path folder) Saved `OutputFile.json`**
-
-
-create with CryptoFuzz, you can see from the `example` section with the following `cryptofuzz-example` command in your terminal:
-
-
-#### Generated example Private Key From CLI `cryptofuzz-example` :
-
-
-all option command for windows `cryptofuzz-example OPTION` and Linux or Mac `cryptofuzz-example OPTION` :
-
-- Generated `private key` (hex) & Converted : `cryptofuzz-example privatekey`
-- Generated `bytes` & Converted : `cryptofuzz-example bytes`
-- Generated `mnemonic` & Converted : `cryptofuzz-example mnemonic`
-- Generated `wif` & Converted : `cryptofuzz-example wif`
-- Generated `binary` & Converted : `cryptofuzz-example binary`
-- Generated Root Key (`xprv`) & Converted : `cryptofuzz-example xprv`
-- Generated `decimal` & Converted : `cryptofuzz-example decimal`
-
-Generated and Converted Private Key (HEX) To another cryptocurrency:
-- Generated Private Key (Hex) and Converted To Ethereum Address [Example command]:
-```shell
-# windows
-cryptofuzz-example ethereum
-# linux and macOs:
-cryptofuzz-example ethereum
-```
-- Generated Private Key (Hex) and Converted To bitcoin Address [Example command]:
-```shell
-# windows
-cryptofuzz-example bitcoin
-# linux and macOs:
-cryptofuzz-example bitcoin
-```
-- Generated Private Key (Hex) and Converted To dash Address [Example command]:
-```shell
-# windows
-cryptofuzz-example dash
-# linux and macOs:
-cryptofuzz-example dash
-```
-- Generated Private Key (Hex) and Converted To dogecoin Address [Example command]:
-```shell
-# windows
-cryptofuzz-example dogecoin
-# linux and macOs:
-cryptofuzz-example dogecoin
-```
-- Generated Private Key (Hex) and Converted To digibyte Address [Example command]:
-```shell
-# windows
-cryptofuzz-example digibyte
-# linux and macOs:
-cryptofuzz-example digibyte
-```
-- Generated Private Key (Hex) and Converted To Bitcoin Gold Address [Example command]:
-```shell
-# windows
-cryptofuzz-example bitcoingold
-# linux and macOs:
-cryptofuzz-example bitcoingold
-```
-- Generated Private Key (Hex) and Converted To qtum Address [Example command]:
-```shell
-# windows
-cryptofuzz-example qtum
-# linux and macOs:
-cryptofuzz-example qtum
-```
-- Generated Private Key (Hex) and Converted To zcash Address [Example command]:
-```shell
-# windows
-cryptofuzz-example zcash
-# linux and macOs:
-cryptofuzz-example zcash
-```
-- Generated Private Key (Hex) and Converted To Ravencoin Address [Example command]:
-```shell
-# windows
-cryptofuzz-example rvn
-# linux and macOs:
-cryptofuzz-example rvn
-```
-- Generated Private Key (Hex) and Converted To Litecoin Address [Example command]:
-```shell
-# windows
-cryptofuzz-example litecoin
-# linux and macOs:
-cryptofuzz-example litecoin
-```
 
 ---
 
@@ -197,15 +82,16 @@ cryptofuzz-example litecoin
 - [Convert Private key To Bitcoin Gold (BTG) Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-bitcoin-gold 'Private key To Bitcoin Gold')
 - [Convert Private key To Ravencoin (rvn) Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-ravencoin 'Private key To Ravencoin (rvn) Address')
 
-
 ---
 
 ### Private Key
 
-More details about private key convert in python with cryptofuzz : [cryptofuzz/Example/Privatekey](https://guide.mmdrza.com/guidelines/cryptofuzz/example/private-key-hex 'cryptofuzz private key hex source code python')
+More details about private key convert in python with
+cryptofuzz : [cryptofuzz/Example/Privatekey](https://guide.mmdrza.com/guidelines/cryptofuzz/example/private-key-hex 'cryptofuzz private key hex source code python')
 
 ```python
 from cryptofuzz import Convertor, Generator
+
 # // Convertor and Generator Shortcut
 conv = Convertor()
 gen = Generator()
@@ -233,9 +119,10 @@ compress_address = conv.hex_to_addr(privatekey, True)
 uncompress_address = conv.hex_to_addr(privatekey, False)
 ```
 
-### Wif 
+### Wif
 
-Convert From Wif ( [More detail and Example](https://guide.mmdrza.com/guidelines/cryptofuzz/example/private-key-wif 'more detail wif convert with cryptofuzz') )
+Convert From
+Wif ( [More detail and Example](https://guide.mmdrza.com/guidelines/cryptofuzz/example/private-key-wif 'more detail wif convert with cryptofuzz') )
 
 ```python
 import os
@@ -301,6 +188,7 @@ compress_address = conv.mne_to_addr(mnemonic, True)
 # Convert Mnemonic To uncompress address
 uncompress_address = conv.mne_to_addr(mnemonic, False)
 ```
+
 ---
 
 ### Decimal
@@ -312,7 +200,6 @@ from cryptofuzz import Convertor, Generator
 
 conv = Convertor()
 gen = Generator()
-
 
 # generate random number decimal
 dec = gen.generate_decimal()
@@ -336,14 +223,155 @@ compress_address = conv.int_to_addr(dec, True)
 uncompress_address = conv.int_to_addr(dec, False)
 
 ```
+
+---
+
+## Command-Line Usage
+
+After installing the `cryptofuzz` package, you can use the `cryptofuzz` command-line tool to perform various
+cryptographic operations directly from your terminal.
+
+### Examples
+
+Here are some examples demonstrating how to use the `cryptofuzz` command-line tool:
+
+#### Generate a New Private Key
+
+```bash
+cryptofuzz --privatekey
+```
+
+**Output:**
+
+```
+Generating a new private key...
+Private Key (Hex): 0x1e99423a4ed27608a15a2616c1...
+WIF: L5BmW3B5xBv...
+Public Key: 04a34b...
+Bitcoin Address (P2PKH): 1BoatSLRHtKNngkdXEeobR76b53LETtpyT
+Ethereum Address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+...
+```
+
+#### Generate a New Mnemonic Phrase
+
+```bash
+cryptofuzz --mnemonic
+```
+
+**Output:**
+
+```
+Generating a new mnemonic phrase...
+Mnemonic: abandon amount liar amount expire adjust cage candy arch gather drum buyer
+Seed: 5eb00bbddcf069084889a8ab9155568165f5c0...
+Private Key: 0x8f2a559490...
+Public Key: 04bfcab...
+Bitcoin Address (P2PKH): 1HZwkCg...
+Ethereum Address: 0xAb5801a7...
+...
+```
+
+#### Convert Private Key to Bitcoin Addresses
+
+```bash
+cryptofuzz --bitcoin
+```
+
+**Output:**
+
+```
+Converting private key to Bitcoin addresses...
+Private Key (Hex): 0x1e99423a4ed27608a15a2616c1...
+P2PKH Address: 1BoatSLRHtKNngkdXEeobR76b53LETtpyT
+P2SH Address: 3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy
+Bech32 Address: bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kygt080
+...
+```
+
+#### Display Example Usages
+
+```bash
+cryptofuzz --example
+```
+
+**Output:**
+
+```
+Cryptofuzz Usage Examples:
+
+1. Generate a new private key:
+   cryptofuzz --privatekey
+
+2. Generate a new mnemonic phrase:
+   cryptofuzz --mnemonic
+
+3. Convert a private key to Ethereum address:
+   cryptofuzz --ethereum
+
+4. Display help information:
+   cryptofuzz --help
+```
+
+### Handling Incorrect Commands
+
+If you enter an incorrect or unsupported command, `cryptofuzz` will suggest the closest matching command or prompt you
+to view the help documentation.
+
+**Example:**
+
+```bash
+cryptofuzz --bitcon
+```
+
+**Output:**
+
+```bash
+Unknown command '--bitcon'.
+Did you mean '--bitcoin'?
+For a list of available commands, type: cryptofuzz --help
+```
+
+### Display Help Information
+
+To view detailed help information about all available commands, use the `--help` flag:
+
+```bash
+cryptofuzz --help
+```
+
+**Output:**
+
+usage: `cryptofuzz [OPTIONS]`
+
+### Example Cryptofuzz Operations
+
+optional arguments:
+
+- `-h`, `--help`            show this help message and exit
+- `-p`, `--privatekey`      Generate a new private key and display associated data.
+- `-m`, `--mnemonic `       Generate a new mnemonic phrase and display associated data.
+- `-b`, `--bytes      `     Generate a random byte sequence and display associated data.
+- `-bin`,` --binary  `      Generate a random binary string and display associated data.
+- `-x`, `--xprv     `       Generate a new extended private key (XPRV) and display associated data.
+- `-d`, `--decimal `        Generate a random decimal number and display associated data.
+- `-w`, `--wif    `         Generate a new WIF key and display associated data.
+- `-btc`, `--bitcoin `      Convert a private key to Bitcoin addresses.
+- `-eth`, `--ethereum `     Convert a private key to an Ethereum address.
+- `-dash`, `--dash     `    Convert a private key to a Dash address.
+- `-ltc`, `--litecoin   `   Convert a private key to Litecoin addresses.
+- `-doge`, `--dogecoin`     Convert a private key to a Dogecoin address.
+- `-btg`, `--bitcoingold`   Convert a private key to a Bitcoin Gold address.
+- `-qtum`, `--qtum `        Convert a private key to a Qtum address.
+- `-zcash`, `--zcash `      Convert a private key to a Zcash address.
+- `-rvn`, `--ravencoin`     Convert a private key to a Ravencoin address.
+- `-ex`, `--example`        Display example usages of different commands.
+
 ---
 
 ### contact
 
-
 Programmer & Owner : Mr. [PyMmdrza](https://github.com/Pymmdrza)
-
-
 
 Email : PyMmdrza@Gmail.Com
 
@@ -352,6 +380,7 @@ Github: [cryptofuzz/cryptofuzz](https://github.com/Pymmdrza/cryptoFuzz)
 Document: [cryptofuzz](https://pymmdrza.github.io/cryptoFuzz)
 
 ---
+
 ### Donate:
 
 Bitcoin (BTC): `1MMDRZA12xdBLD1P5AfEfvEMErp588vmF9`
