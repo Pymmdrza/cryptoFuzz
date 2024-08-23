@@ -46,7 +46,12 @@ jobs:
     - name: Apply stashed changes
       run: git stash pop
 
-    - name: Bump version
+    - name: Check for changes
+      id: changes_check
+      run: echo "::set-output name=changes::$(git status --porcelain)"
+
+    - name: Commit and push changes
+      if: steps.changes_check.outputs.changes != ''
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
@@ -64,4 +69,3 @@ jobs:
         TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
       run: |
         twine upload dist/*
-
