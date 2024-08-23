@@ -14,11 +14,11 @@ from .hd import (
     Qtum,
     Ravencoin,
     Tron,
-    Zcash
+    Zcash,
 )
 
 # Metadata
-__version__ = "v3.9.6"
+__version__ = "v4.0.3"
 __license__ = "MIT"
 __author__ = "Mohammadreza (MMDRZA)"
 __email__ = "PyMmdrza@gmail.com"
@@ -41,7 +41,7 @@ __all__ = [
     "utils",
     "hd",
     "CLI",
-    
+
     # Classes
     "Convertor",
     "Generator",
