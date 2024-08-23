@@ -41,6 +41,7 @@ jobs:
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
+        git pull origin main
         git add setup.py cryptofuzz/__init__.py
         git commit -m 'version Update Mode'
         git push origin main
