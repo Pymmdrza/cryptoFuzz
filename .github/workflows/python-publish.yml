@@ -84,6 +84,11 @@ jobs:
         VERSION=$(python setup.py --version)
         echo "VERSION=$VERSION" >> $GITHUB_ENV
 
+    - name: Create Git tag
+      run: |
+        git tag v${{ env.VERSION }}
+        git push origin v${{ env.VERSION }}
+
     - name: Create ZIP file
       run: |
         zip -r cryptofuzz-v${{ env.VERSION }}.zip dist/
