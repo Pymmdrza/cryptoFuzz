@@ -1,4 +1,4 @@
-name: cryptofuzz Python package
+name: cryptoFuzz Package
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -27,6 +28,37 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install setuptools wheel twine
+        
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Test with unittest
+      run: |
+        python -m unittest discover tests
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine
 
     - name: Get Bumper File
       run: curl -o bump_version.py ${{ secrets.BUMP_VER }}
@@ -37,21 +69,7 @@ jobs:
     - name: Remove Bump Script
       run: rm -r bump_version.py
 
-    - name: Stash local changes
-      run: git stash
-
-    - name: Pull latest changes
-      run: git pull origin main
-
-    - name: Apply stashed changes
-      run: git stash pop
-
-    - name: Check for changes
-      id: changes_check
-      run: echo "::set-output name=changes::$(git status --porcelain)"
-
-    - name: Commit and push changes
-      if: steps.changes_check.outputs.changes != ''
+    - name: Bump version
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
@@ -67,5 +85,6 @@ jobs:
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        BUMP_VER: ${{ secrets.BUMP_VER }}
       run: |
         twine upload dist/*
