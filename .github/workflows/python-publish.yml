@@ -68,6 +68,7 @@ jobs:
         VERSION=$(cat version.txt)
         echo "VERSION=$VERSION" >> $GITHUB_ENV
 
+
     - name: Bump version
       run: |
         git config --global user.name 'github-actions'
@@ -82,18 +83,18 @@ jobs:
 
     - name: Create Git tag
       run: |
-        git tag v${{ env.VERSION }}
-        git push origin v${{ env.VERSION }}
+        git tag v${{ steps.get_version.outputs.VERSION }}
+        git push origin v${{ steps.get_version.outputs.VERSION }}
 
     - name: Create ZIP file
       run: |
-        zip -r cryptofuzz-v${{ env.VERSION }}.zip dist/
+        zip -r cryptofuzz-v${{ steps.get_version.outputs.VERSION }}.zip dist/
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
-        files: cryptofuzz-v${{ env.VERSION }}.zip
-        tag_name: v${{ env.VERSION }}
+        files: cryptofuzz-v${{ steps.get_version.outputs.VERSION }}.zip
+        tag_name: v${{ steps.get_version.outputs.VERSION }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
