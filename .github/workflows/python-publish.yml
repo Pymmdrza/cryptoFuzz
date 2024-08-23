@@ -37,11 +37,19 @@ jobs:
     - name: Remove Bump Script
       run: rm -r bump_version.py
 
+    - name: Stash local changes
+      run: git stash
+
+    - name: Pull latest changes
+      run: git pull origin main
+
+    - name: Apply stashed changes
+      run: git stash pop
+
     - name: Bump version
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-        git pull origin main
         git add setup.py cryptofuzz/__init__.py
         git commit -m 'version Update Mode'
         git push origin main
@@ -54,6 +62,6 @@ jobs:
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        BUMP_VER: ${{ secrets.BUMP_VER }}
       run: |
         twine upload dist/*
+
