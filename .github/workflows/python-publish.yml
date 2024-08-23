@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -34,7 +33,6 @@ jobs:
         pip install flake8
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-
 
   publish:
     needs: build
@@ -64,6 +62,12 @@ jobs:
     - name: Remove Bump Script
       run: rm -r bump_version.py
 
+    - name: Extract version from file
+      id: get_version
+      run: |
+        VERSION=$(cat version.txt)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+
     - name: Bump version
       run: |
         git config --global user.name 'github-actions'
@@ -75,22 +79,11 @@ jobs:
     - name: Build package
       run: |
         python setup.py sdist bdist_wheel
-        
-    - name: Get version from setup.py
-      id: get_version
-      run: |
-        VERSION=$(python setup.py --version)
-        echo "VERSION=$VERSION" >> $GITHUB_ENV
 
     - name: Create Git tag
       run: |
         git tag v${{ env.VERSION }}
         git push origin v${{ env.VERSION }}
-
-    - name: Verify Git tag
-      run: |
-        git fetch --tags
-        git tag --list
 
     - name: Create ZIP file
       run: |
