@@ -71,6 +71,19 @@ sudo chmod +x install.sh
 
 ---
 
+## Update `2024.08.23`:
+
+Add Short Key (Mini Private Key) Converter for bitcoin wallet. (Mini Private Key : [More Detail's](https://en.bitcoin.it/wiki/Mini_private_key_format))
+
+Short Key Like: `S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy`
+
+- Convert Short Key To Private Key (hex).
+- Convert Short Key To Seed (bytes)
+- Convert Short Key To Wif Compress and Uncompress.
+- Convert Short Key To Decimal Number.
+
+---
+
 - More example follow : [Example/Source](https://github.com/Pymmdrza/cryptoFuzz/tree/main/Example)
 - [Convert Private key To Bitcoin (All Format) Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-bitcoin 'Private key To Bitcoin (All Format) Address')
 - [Convert Private key To Ethereum Address With Cryptofuzz](https://guide.mmdrza.com/guidelines/cryptofuzz/private-key-to-ethereum 'Private key To Ethereum Address')
@@ -350,16 +363,16 @@ optional arguments:
 
 - `-h`, `--help`            show this help message and exit
 - `-p`, `--privatekey`      Generate a new private key and display associated data.
-- `-m`, `--mnemonic `       Generate a new mnemonic phrase and display associated data.
-- `-b`, `--bytes      `     Generate a random byte sequence and display associated data.
-- `-bin`,` --binary  `      Generate a random binary string and display associated data.
-- `-x`, `--xprv     `       Generate a new extended private key (XPRV) and display associated data.
-- `-d`, `--decimal `        Generate a random decimal number and display associated data.
-- `-w`, `--wif    `         Generate a new WIF key and display associated data.
-- `-btc`, `--bitcoin `      Convert a private key to Bitcoin addresses.
-- `-eth`, `--ethereum `     Convert a private key to an Ethereum address.
-- `-dash`, `--dash     `    Convert a private key to a Dash address.
-- `-ltc`, `--litecoin   `   Convert a private key to Litecoin addresses.
+- `-m`, `--mnemonic`        Generate a new mnemonic phrase and display associated data.
+- `-b`, `--bytes`           Generate a random byte sequence and display associated data.
+- `-bin`,` --binary`        Generate a random binary string and display associated data.
+- `-x`, `--xprv`            Generate a new extended private key (XPRV) and display associated data.
+- `-d`, `--decimal`         Generate a random decimal number and display associated data.
+- `-w`, `--wif`             Generate a new WIF key and display associated data.
+- `-btc`, `--bitcoin`       Convert a private key to Bitcoin addresses.
+- `-eth`, `--ethereum`      Convert a private key to an Ethereum address.
+- `-dash`, `--dash`         Convert a private key to a Dash address.
+- `-ltc`, `--litecoin`      Convert a private key to Litecoin addresses.
 - `-doge`, `--dogecoin`     Convert a private key to a Dogecoin address.
 - `-btg`, `--bitcoingold`   Convert a private key to a Bitcoin Gold address.
 - `-qtum`, `--qtum `        Convert a private key to a Qtum address.
