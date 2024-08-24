@@ -14,29 +14,29 @@ grey = "\033[90m"
 reset = "\033[0m"
 # ------------------------
 
-message_usage = f"""
-    Generate a private key, mnemonic phrase, byte sequence, binary string With Cryptofuzz:
+message_usage = f"""\n
+Generate a private key, mnemonic phrase, byte sequence, binary string With Cryptofuzz:\n
 
-    {green}cryptofuzz{reset} <operation> [options]
+    {green}cryptofuzz{reset} <operation> [options]\n
 
-    Operations:
-        {green}-p,   {reset} {cyan}--privatekey  {reset}  {white} Generate a private key                       {reset}
-        {green}-m,   {reset} {cyan}--mnemonic    {reset}  {white} Generate a mnemonic phrase                   {reset}
-        {green}-b,   {reset} {cyan}--byte        {reset}  {white} Generate a byte sequence                     {reset}
-        {green}-bin, {reset} {cyan}--binary      {reset}  {white} Generate a binary string                     {reset}
-        {green}-x,   {reset} {cyan}--xprv        {reset}  {white} Generate a root key (XPRV)                   {reset}
-        {green}-d,   {reset} {cyan}--decimal     {reset}  {white} Generate a decimal number                    {reset}
-        {green}-w,   {reset} {cyan}--wif         {reset}  {white} Generate a WIF                               {reset}
-        {green}-eth, {reset} {cyan}--ethereum    {reset}  {white} Generate an Ethereum address                 {reset}
-        {green}-ltc, {reset} {cyan}--litecoin    {reset}  {white} Generate a Litecoin address                  {reset}
-        {green}-digi, {reset} {cyan}--digibyte    {reset}  {white} Generate a DigiByte address                  {reset}
-        {green}-doge, {reset} {cyan}--dogecoin    {reset}  {white} Generate a Dogecoin address                  {reset}
-        {green}-btg, {reset} {cyan}--bitcoingold {reset}  {white} Generate a Bitcoin Gold address              {reset}
-        {green}-qtum,{reset} {cyan}--qtum        {reset}  {white} Generate a Qtum address                      {reset}
-        {green}-zec, {reset} {cyan}--zcash       {reset}  {white} Generate a Zcash address                     {reset}
-        {green}-rvn, {reset} {cyan}--ravencoin   {reset}  {white} Generate a Ravencoin address                 {reset}
-        {green}-ex,  {reset} {cyan}--example     {reset}  {white} Display example usages of different commands {reset}
-        {green}-gen, {reset} {cyan}--generate    {reset}  {white} Generate example usages of different commands{reset}
+    Operations:\n
+        {green}-p,   {reset} {cyan}--privatekey  {reset}  {white} Generate a private key\n{reset}
+        {green}-m,   {reset} {cyan}--mnemonic    {reset}  {white} Generate a mnemonic phrase\n{reset}
+        {green}-b,   {reset} {cyan}--byte        {reset}  {white} Generate a byte sequence\n{reset}
+        {green}-bin, {reset} {cyan}--binary      {reset}  {white} Generate a binary string\n{reset}
+        {green}-x,   {reset} {cyan}--xprv        {reset}  {white} Generate a root key (XPRV)\n{reset}
+        {green}-d,   {reset} {cyan}--decimal     {reset}  {white} Generate a decimal number\n{reset}
+        {green}-w,   {reset} {cyan}--wif         {reset}  {white} Generate a WIF\n{reset}
+        {green}-eth, {reset} {cyan}--ethereum    {reset}  {white} Generate an Ethereum address\n{reset}
+        {green}-ltc, {reset} {cyan}--litecoin    {reset}  {white} Generate a Litecoin address\n{reset}
+        {green}-digi, {reset} {cyan}--digibyte    {reset}  {white} Generate a DigiByte address\n{reset}
+        {green}-doge, {reset} {cyan}--dogecoin    {reset}  {white} Generate a Dogecoin address\n{reset}
+        {green}-btg, {reset} {cyan}--bitcoingold {reset}  {white} Generate a Bitcoin Gold address\n{reset}
+        {green}-qtum,{reset} {cyan}--qtum        {reset}  {white} Generate a Qtum address\n{reset}
+        {green}-zec, {reset} {cyan}--zcash       {reset}  {white} Generate a Zcash address\n{reset}
+        {green}-rvn, {reset} {cyan}--ravencoin   {reset}  {white} Generate a Ravencoin address\n{reset}
+        {green}-ex,  {reset} {cyan}--example     {reset}  {white} Display example usages of different commands\n {reset}
+        {green}-gen, {reset} {cyan}--generate    {reset}  {white} Generate example usages of different commands\n{reset}
 
     """
 
@@ -437,31 +437,31 @@ def example_generate(genSize, args):
     generated = False
     if args.privatekey:
         for i in range(genSize):
-            print(example_privatekey())
+            example_privatekey()
         generated = True
     if args.mnemonic:
         for i in range(genSize):
-            print(example_mnemonic())
+            example_mnemonic()
         generated = True
     if args.byte:
         for i in range(genSize):
-            print(example_bytes())
+            example_bytes()
         generated = True
     if args.binary:
         for i in range(genSize):
-            print(example_binary())
+            example_binary()
         generated = True
     if args.xprv:
         for i in range(genSize):
-            print(example_xprv())
+            example_xprv()
         generated = True
     if args.decimal:
         for i in range(genSize):
-            print(example_dec())
+            example_dec()
         generated = True
     if args.wif:
         for i in range(genSize):
-            print(example_wif())
+            example_wif()
         generated = True
 
     if not generated:
@@ -515,7 +515,8 @@ def mainWork():
         else:
             handle_incorrect_command(sys.argv[1])
     else:
-        print(f"{red}No command provided. Use --help to see available options.{reset}")
+        print(f"\n\t{red}No command provided. Use --help to see available options.{reset}\n")
+        print(message_usage)
 
 
 if __name__ == "__main__":
