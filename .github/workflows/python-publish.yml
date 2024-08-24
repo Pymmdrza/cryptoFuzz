@@ -7,6 +7,15 @@ on:
     branches: [ "main" ]
 
   workflow_dispatch:
+    inputs:
+      logLevel:
+        description: Log level
+        default: warning
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
 
 jobs:
   build:
