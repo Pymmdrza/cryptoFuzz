@@ -1,0 +1,2 @@
+hdwallet==2.2.1
+ecdsa==0.18.0
