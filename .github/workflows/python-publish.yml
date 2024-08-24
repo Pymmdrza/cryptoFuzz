@@ -62,7 +62,9 @@ jobs:
     - name: Remove Bump Script
       run: rm -r bump_version.py
 
-
+    - name: Update Index Page For Readthedocs
+      run: cp README.md docs/index.md
+      
     - name: Bump version
       run: |
         git config --global user.name 'github-actions'
@@ -71,7 +73,7 @@ jobs:
         git commit -m 'version Update Mode'
         git push origin main
 
-    - name: Build package
+    - name: Build Cryptofuzz Package
       run: |
         python setup.py sdist bdist_wheel
 
