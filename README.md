@@ -71,7 +71,7 @@ sudo chmod +x install.sh
 
 ---
 
-## Update `2024.08.23`:
+## Update `2024.08.24`:
 
 Add Short Key (Mini Private Key) Converter for bitcoin wallet. (Mini Private Key : [More Detail's](https://en.bitcoin.it/wiki/Mini_private_key_format))
 
