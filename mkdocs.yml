@@ -1,13 +1,13 @@
 site_name: CryptoFuzz
 site_author: 'Pymmdrza@gmail.com'
 repo_url: 'https://github.com/Pymmdrza/cryptoFuzz'
-edit_uri: ''
+edit_uri: '?query=root/path/docs/'
 site_description: 'cryptoFuzz a fast and easy Python package for generating private keys and mnemonics, converting seeds, binary, and decimals.'
-site_url: 'https://cryptofuzz.readthedocs.io'
+site_url: 'https://pymmdrza.gitbook.io/cryptoFuzz'
 copyright: 'Copyright © 2023, Pymmdrza'
 
 nav:
-    - Home: ../README.md
+    - Home: index.md
     - Use in Windows: '#windows'
     - Use in Linux/Mac: '#linux--mac'
     - Git: '#git'
