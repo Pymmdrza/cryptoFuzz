@@ -478,7 +478,7 @@ def example_generate(genSize, args):
 
 
 # Main function (entry point)
-def main():
+def mainWork():
     if len(sys.argv) > 1:
         args = parse_arguments()
 
@@ -519,4 +519,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    mainWork()
