@@ -6,7 +6,7 @@ import os
 
 PACK_NAME = "CryptoFuzz"
 PACK_DESCRIPTION = "Generated and Converted Keys with any Type Foundation from Private Key [WIF Hexed Mnemonic and Binary Bytes seed] in Python"
-PACK_VERSION = "3.9.6"
+PACK_VERSION = "4.0.3"
 PACK_LICENSE = "MIT"
 PACK_AUTHOR = "Mohammadreza (Mmdrza.Com)"
 PACK_EMAIL = "Pymmdrza@gmail.com"
@@ -36,7 +36,7 @@ PACK_CLASSIFIERS = ["Development Status :: 5 - Production/Stable",
                     "Programming Language :: Python :: 3.11",
                     "Programming Language :: Python :: Implementation :: CPython",
                     "Operating System :: OS Independent"]
-PACK_COPYRIGHT = f"Copyright (C) 2023 ~ Mmdrza.Com"
+PACK_COPYRIGHT = f"Copyright (C) 2024 ~ Mmdrza.Com"
 PACK_CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))
 PACK_README = "README.md"
 PACK_PROJECT_URLS = {
@@ -47,8 +47,7 @@ PACK_PROJECT_URLS = {
 }
 PACK_SCRIPTS_CONSOLE = {
     'console_scripts': [
-        'cryptofuzz=cryptofuzz.CLI:__main__',
-        'cryptofuzz-example=cryptofuzz.example:__main__'
+        'cryptofuzz=cryptofuzz.CLI:mainWork'
     ]
 }
 
@@ -66,7 +65,6 @@ version = get_version('cryptofuzz')
 
 with open(os.path.join(os.path.dirname(__file__), 'README.md'), encoding='utf-8') as readme:
     long_description = readme.read()
-
 
 setup(
     name=PACK_NAME,
