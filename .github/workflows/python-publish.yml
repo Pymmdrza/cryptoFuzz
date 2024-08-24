@@ -70,6 +70,7 @@ jobs:
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         git add setup.py cryptofuzz/__init__.py
+        git add .
         git commit -m 'version Update Mode'
         git push origin main
 
