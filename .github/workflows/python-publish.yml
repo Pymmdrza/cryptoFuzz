@@ -63,7 +63,7 @@ jobs:
       run: rm -r bump_version.py
 
     - name: Update Index Page For Readthedocs
-      run: cp README.md docs/index.md
+      run: cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/docs/index.md
       
     - name: Bump version
       run: |
