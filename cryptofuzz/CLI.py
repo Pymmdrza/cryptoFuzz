@@ -29,8 +29,8 @@ Generate a private key, mnemonic phrase, byte sequence, binary string With Crypt
         {green}-w,   {reset} {cyan}--wif         {reset}  {white} Generate a WIF\n{reset}
         {green}-eth, {reset} {cyan}--ethereum    {reset}  {white} Generate an Ethereum address\n{reset}
         {green}-ltc, {reset} {cyan}--litecoin    {reset}  {white} Generate a Litecoin address\n{reset}
-        {green}-digi, {reset} {cyan}--digibyte    {reset}  {white} Generate a DigiByte address\n{reset}
-        {green}-doge, {reset} {cyan}--dogecoin    {reset}  {white} Generate a Dogecoin address\n{reset}
+        {green}-digi, {reset} {cyan}--digibyte   {reset}  {white} Generate a DigiByte address\n{reset}
+        {green}-doge, {reset} {cyan}--dogecoin   {reset}  {white} Generate a Dogecoin address\n{reset}
         {green}-btg, {reset} {cyan}--bitcoingold {reset}  {white} Generate a Bitcoin Gold address\n{reset}
         {green}-qtum,{reset} {cyan}--qtum        {reset}  {white} Generate a Qtum address\n{reset}
         {green}-zec, {reset} {cyan}--zcash       {reset}  {white} Generate a Zcash address\n{reset}
