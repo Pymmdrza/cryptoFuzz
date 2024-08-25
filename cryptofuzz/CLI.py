@@ -478,7 +478,7 @@ def example_generate(genSize, args):
             example_wif()
             time.sleep(0.1)
         generated = True
-        
+
     if not generated:
         print(f"{red}No valid arguments provided for generation.{reset}\n"
               f"Batch Generate Example:\n"
@@ -490,8 +490,6 @@ def example_generate(genSize, args):
               f"WIF (Generate {grey}100{reset}) : {green}cryptofuzz --wif --generate 100{reset}\n"
               f"Decimal (Generate {grey}100{reset}) : {green}cryptofuzz --decimal --generate 100{reset}\n"
               f"{red}{'-' * 43}{reset}\n")
-
-
 
 
 # Main function (entry point)
@@ -520,17 +518,20 @@ def mainWork():
             'zcash': example_pvk_to_zcash,
             'ravencoin': example_pvk_to_rvn,
             # -------------------------------
-            'generate': lambda: example_generate(args.generate, args),
+            'generate': None,
             'example': show_examples
         }
 
-        # Iterate over possible commands and call the corresponding function
-        for command, func in command_map.items():
-            if getattr(args, command):
-                func()
-                break
+
+        if args.generate > 1:
+            example_generate(args.generate, args)
         else:
-            handle_incorrect_command(sys.argv[1])
+            for command, func in command_map.items():
+                if getattr(args, command):
+                    func()
+                    break
+            else:
+                handle_incorrect_command(sys.argv[1])
     else:
         print(f"\n\t{red}No command provided. Use --help to see available options.{reset}\n")
         print(message_usage)
