@@ -1,5 +1,6 @@
 import sys
 import argparse
+import time
 from difflib import get_close_matches
 from .Wallet import *
 
@@ -437,33 +438,47 @@ def example_generate(genSize, args):
     generated = False
     if args.privatekey:
         for i in range(genSize):
+            print(f"Generating Private Key {i + 1}/{genSize}...")
             example_privatekey()
+            time.sleep(0.1)
         generated = True
     if args.mnemonic:
         for i in range(genSize):
+            print(f"Generating Mnemonic {i + 1}/{genSize}...")
             example_mnemonic()
+            time.sleep(0.1)
         generated = True
     if args.byte:
         for i in range(genSize):
+            print(f"Generating Byte Sequence {i + 1}/{genSize}...")
             example_bytes()
+            time.sleep(0.1)
         generated = True
     if args.binary:
         for i in range(genSize):
+            print(f"Generating Binary String {i + 1}/{genSize}...")
             example_binary()
+            time.sleep(0.1)
         generated = True
     if args.xprv:
         for i in range(genSize):
+            print(f"Generating XPRV {i + 1}/{genSize}...")
             example_xprv()
+            time.sleep(0.1)
         generated = True
     if args.decimal:
         for i in range(genSize):
+            print(f"Generating Decimal {i + 1}/{genSize}...")
             example_dec()
+            time.sleep(0.1)
         generated = True
     if args.wif:
         for i in range(genSize):
+            print(f"Generating WIF {i + 1}/{genSize}...")
             example_wif()
+            time.sleep(0.1)
         generated = True
-
+        
     if not generated:
         print(f"{red}No valid arguments provided for generation.{reset}\n"
               f"Batch Generate Example:\n"
@@ -475,6 +490,8 @@ def example_generate(genSize, args):
               f"WIF (Generate {grey}100{reset}) : {green}cryptofuzz --wif --generate 100{reset}\n"
               f"Decimal (Generate {grey}100{reset}) : {green}cryptofuzz --decimal --generate 100{reset}\n"
               f"{red}{'-' * 43}{reset}\n")
+
+
 
 
 # Main function (entry point)
