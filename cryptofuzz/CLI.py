@@ -65,7 +65,6 @@ def example_privatekey():
     print(f"{cyan}Decimal              {reset}: {dec}")
     print(f"{cyan}Compress Address     {reset}: {compress_address}")
     print(f"{cyan}Uncompress Address   {reset}: {uncompress_address}")
-    print(f"\n[*] {red}All Converted Data From Private Key (HEX){reset}.")
 
 
 def example_mnemonic():
@@ -89,7 +88,6 @@ def example_mnemonic():
     print(f"{cyan}Decimal               {reset}: {dec}")
     print(f"{cyan}Address Compress      {reset}: {address_compress}")
     print(f"{cyan}Address Uncompress    {reset}: {address_uncompress}")
-    print(f"[*] {red}All Converted Data From Mnemonic (BIP39){reset}.")
 
 
 def example_bytes():
@@ -188,7 +186,7 @@ def example_dec():
           f"\n{cyan}Public Key Uncompress {reset}: {public_uncompress}"
           f"\n{cyan}Address Compress      {reset}: {address_compress}"
           f"\n{cyan}Address Uncompress    {reset}: {address_uncompress}"
-          f"\n[*] Converted All Data From Decimal.")
+          f"")
 
 
 def example_wif():
@@ -211,7 +209,7 @@ def example_wif():
           f"\n{cyan}Decimal               {reset}: {dec}"
           f"\n{cyan}Address Compress      {reset}: {address_compress}"
           f"\n{cyan}Address Uncompress    {reset}: {address_uncompress}"
-          f"\n[*] Converted All Data From WIF.")
+          f"")
 
 
 # -------------------------------------------------
