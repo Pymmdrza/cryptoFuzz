@@ -37,6 +37,7 @@ __all__ = [
     # Core modules
     "Wallet",
     "assest",
+    "block",
     "bs58",
     "utils",
     "hd",
