@@ -71,7 +71,7 @@ sudo chmod +x install.sh
 
 ---
 
-## Update `2024.08.24`:
+### Update `2024.08.24`:
 
 Add Short Key (Mini Private Key) Converter for bitcoin wallet. (Mini Private Key : [More Detail's](https://en.bitcoin.it/wiki/Mini_private_key_format))
 
@@ -97,7 +97,7 @@ Short Key Like: `S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy`
 
 ---
 
-### Private Key
+## Private Key
 
 More details about private key convert in python with
 cryptofuzz : [cryptofuzz/Example/Privatekey](https://guide.mmdrza.com/guidelines/cryptofuzz/example/private-key-hex 'cryptofuzz private key hex source code python')
@@ -132,7 +132,7 @@ compress_address = conv.hex_to_addr(privatekey, True)
 uncompress_address = conv.hex_to_addr(privatekey, False)
 ```
 
-### Wif
+## Wif
 
 Convert From
 Wif ( [More detail and Example](https://guide.mmdrza.com/guidelines/cryptofuzz/example/private-key-wif 'more detail wif convert with cryptofuzz') )
@@ -168,7 +168,7 @@ uncompress_address = conv.wif_to_addr(wif, False)
 
 ```
 
-### Mnemonic
+## Mnemonic
 
 Convert From Mnemonic (BIP39) ( [More Detail](https://guide.mmdrza.com/guidelines/cryptofuzz/example/mnemonic) )
 
@@ -204,7 +204,7 @@ uncompress_address = conv.mne_to_addr(mnemonic, False)
 
 ---
 
-### Decimal
+## Decimal
 
 Convert From Decimal (Number) ( [More Detail](https://guide.mmdrza.com/guidelines/cryptofuzz/example/decimal) )
 
@@ -239,6 +239,21 @@ uncompress_address = conv.int_to_addr(dec, False)
 
 ---
 
+## Block
+
+read block data from block file (bitcoin core sync data file's) [ `blk00001.blk` ]
+
+```python
+from cryptofuzz import block
+import os
+# path block file
+path_data = os.path.join("BITCOIN_CORE_SYNC_BLOCK_FOLDER")
+block_path = os.path.join(path_data, "blk00001.dat") # first block file sync
+# full block data
+block_data = block.reader(block_path) 
+```
+
+---
 ## Command-Line Usage
 
 After installing the `cryptofuzz` package, you can use the `cryptofuzz` command-line tool to perform various
@@ -248,7 +263,7 @@ cryptographic operations directly from your terminal.
 
 Here are some examples demonstrating how to use the `cryptofuzz` command-line tool:
 
-#### Generate a New Private Key
+### Generate a New Private Key
 
 ```bash
 cryptofuzz --privatekey
@@ -266,7 +281,7 @@ Ethereum Address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
 ...
 ```
 
-#### Generate a New Mnemonic Phrase
+### Generate a New Mnemonic Phrase
 
 ```bash
 cryptofuzz --mnemonic
@@ -282,10 +297,9 @@ Private Key: 0x8f2a559490...
 Public Key: 04bfcab...
 Bitcoin Address (P2PKH): 1HZwkCg...
 Ethereum Address: 0xAb5801a7...
-...
 ```
 
-#### Convert Private Key to Bitcoin Addresses
+### Convert Private Key to Bitcoin Addresses
 
 ```bash
 cryptofuzz --bitcoin
@@ -299,10 +313,9 @@ Private Key (Hex): 0x1e99423a4ed27608a15a2616c1...
 P2PKH Address: 1BoatSLRHtKNngkdXEeobR76b53LETtpyT
 P2SH Address: 3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy
 Bech32 Address: bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kygt080
-...
 ```
 
-#### Display Example Usages
+### Display Example Usages
 
 ```bash
 cryptofuzz --example
