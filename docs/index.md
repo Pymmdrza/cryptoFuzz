@@ -14,7 +14,7 @@
 On Windows, you can install CryptoFuzz using the following pip command:
 
 ```bash
-pip install cryptofuzz
+pip install --upgrade cryptofuzz
 ```
 
 ### Linux & Mac
@@ -22,7 +22,7 @@ pip install cryptofuzz
 On Linux and macOS, you should use pip3 for installation:
 
 ```bash
-pip3 install cryptofuzz
+pip3 install --upgrade cryptofuzz
 ```
 
 ### Git
@@ -241,7 +241,7 @@ uncompress_address = conv.int_to_addr(dec, False)
 
 ## Block
 
-read block data from block file (bitcoin core sync data file's) [ `blk00001.blk` ]
+read block data from block file (bitcoin core sync data file's) [ `blk00001.dat` ]
 
 ```python
 from cryptofuzz import block
