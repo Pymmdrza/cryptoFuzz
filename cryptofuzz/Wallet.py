@@ -205,7 +205,7 @@ def PrivateKey_To_Mnemonic(hexed: str) -> str:
 
     """
     seed = convertor.hex_to_bytes(hexed)
-    return convertor.bytes_to_mne(seed)
+    return convertor.bytes_to_mnemonic(seed)
 
 
 # ----------------------------------------------------------
@@ -440,7 +440,7 @@ def Bytes_To_Mnemonic(seed: bytes) -> str:
     
     
     """
-    return convertor.bytes_to_mne(seed)
+    return convertor.bytes_to_mnemonic(seed)
 
 
 # ----------------------------------------------------------
@@ -751,7 +751,7 @@ def Wif_To_PrivateKey(wif: str) -> str:
 
 # ----------------------------------------------------------
 def Wif_To_Mnemonic(wif: str) -> str:
-    return convertor.bytes_to_mne(convertor.wif_to_bytes(wif))
+    return convertor.bytes_to_mnemonic(convertor.wif_to_bytes(wif))
 
 
 # ----------------------------------------------------------
@@ -818,7 +818,7 @@ def Decimal_To_Address(dec: int, compress: bool = False) -> str:
 # ----------------------------------------------------------
 def Decimal_To_Mnemonic(dec: int) -> str:
     seed = convertor.int_to_bytes(dec)
-    return convertor.bytes_to_mne(seed)
+    return convertor.bytes_to_mnemonic(seed)
 
 
 # ----------------------------------------------------------
@@ -866,7 +866,8 @@ def Binary_To_PrivateKey(binary_str: str) -> str: return convertor.bytes_to_hex(
 
 
 # ----------------------------------------------------------
-def Binary_To_Mnemonic(binary_str: str) -> str: return convertor.bytes_to_mne(convertor.binary_to_bytes(binary_str))
+def Binary_To_Mnemonic(binary_str: str) -> str: return convertor.bytes_to_mnemonic(
+    convertor.binary_to_bytes(binary_str))
 
 
 # ----------------------------------------------------------
@@ -910,7 +911,7 @@ def XPRV_To_Address(xprv: str, compress: bool = False) -> str: return convertor.
     convertor.xprv_to_bytes(xprv), compress)
 
 
-def XPRV_To_Mnemonic(xprv: str) -> str: return convertor.bytes_to_mne(convertor.xprv_to_bytes(xprv))
+def XPRV_To_Mnemonic(xprv: str) -> str: return convertor.bytes_to_mnemonic(convertor.xprv_to_bytes(xprv))
 
 
 def XPRV_To_XPUB(xprv: str) -> str: return convertor.bytes_to_xpub(convertor.xprv_to_bytes(xprv))
