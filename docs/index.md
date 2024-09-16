@@ -71,9 +71,23 @@ sudo chmod +x install.sh
 
 ---
 
+### Update `2024.09.07`:
+
+Add Function for checking mnemonic standard type :
+
+- `cryptofuzz.utils.is_mnemonic`
+
+```python
+from cryptofuzz import Convertor
+
+cn = Convertor()
+isValid = cn.is_mnemonic("abandon ... help abandon flower")  # Mnemonic 12/18/24
+```
+
 ### Update `2024.08.24`:
 
-Add Short Key (Mini Private Key) Converter for bitcoin wallet. (Mini Private Key : [More Detail's](https://en.bitcoin.it/wiki/Mini_private_key_format))
+Add Short Key (Mini Private Key) Converter for bitcoin wallet. (Mini Private
+Key : [More Detail's](https://en.bitcoin.it/wiki/Mini_private_key_format))
 
 Short Key Like: `S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy`
 
@@ -246,14 +260,16 @@ read block data from block file (bitcoin core sync data file's) [ `blk00001.dat`
 ```python
 from cryptofuzz import block
 import os
+
 # path block file
 path_data = os.path.join("BITCOIN_CORE_SYNC_BLOCK_FOLDER")
-block_path = os.path.join(path_data, "blk00001.dat") # first block file sync
+block_path = os.path.join(path_data, "blk00001.dat")  # first block file sync
 # full block data
 block_data = block.reader(block_path) 
 ```
 
 ---
+
 ## Command-Line Usage
 
 After installing the `cryptofuzz` package, you can use the `cryptofuzz` command-line tool to perform various
