@@ -109,7 +109,7 @@ class Tron:
         # -- Private Key String --
         KEY = key.to_string()
         # -- Keccak Hash --
-        Keccak = KECCAK.new(digest_bits=256)
+        Keccak = keccak.new(digest_bits=256)
         Keccak.update(KEY)
         # -- Public Key --
         pub_key = Keccak.digest()
