@@ -1,7 +1,7 @@
 # Programmer: Mmdrza.Com
 
 # Import modules
-from .utils import Convertor, Generator
+from .utils import Convertor, Generator, keccak
 from .hd import (
     Axe,
     Bitcoin,
