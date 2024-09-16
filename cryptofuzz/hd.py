@@ -1,6 +1,25 @@
+from .bs58 import b58encode_check
 from .utils import (
-    re, HD_W, BTC, ETH, TRX, DGB, DOGE, DASH, BTG, RVN, ZEC, QTUM, LTC, AXE
+    re,
+    HD_W,
+    BTC,
+    ETH,
+    TRX,
+    DGB,
+    DOGE,
+    DASH,
+    BTG,
+    RVN,
+    ZEC,
+    QTUM,
+    LTC,
+    AXE,
+    KECCAK,
+    ecdsa,
+    hashlib,
+    MAX_PRIVATE_KEY
 )
+
 
 def is_valid_hex(hexstring: str) -> bool:
     return re.match("^[a-fA-F0-9]*$", hexstring) is not None
@@ -75,23 +94,60 @@ class Ethereum:
 
 
 class Tron:
-    def __int__(self):
+    def __init__(self):
         super().__init__()
 
-    def hex_addr(self, hexed: str) -> str:
+    @staticmethod
+    def byte_to_primitive(seed: bytes) -> bytes:
+        """Convert seed bytes to primitive bytes."""
+        if len(seed) != 32:
+            raise ValueError("Invalid seed length")
+        # -- Signing Key --
+        sk = ecdsa.SigningKey.from_string(seed, curve=ecdsa.SECP256k1)
+        # -- Verifying Key --
+        key = sk.get_verifying_key()
+        # -- Private Key String --
+        KEY = key.to_string()
+        # -- Keccak Hash --
+        Keccak = KECCAK.new(digest_bits=256)
+        Keccak.update(KEY)
+        # -- Public Key --
+        pub_key = Keccak.digest()
+        # -- Primitive Address Bytes --
+        primitive = b'\x41' + pub_key[-20:]
+        return primitive
 
-        """
-        Convert Private key Hex To All Tron Format Type Address .
-        :param hexed:
-        :rtype str:
-        :return: str - address
-        """
-        if is_valid_hex(hexed):
-            hd: HD_W = HD_W(TRX)
-            hd.from_private_key(hexed)
-            return hd.p2pkh_address()
-        else:
-            ValueError("hex format invalid check again.[format: hex][64 length]")
+    def bytes_to_addr(self, seed: bytes) -> str:  # noqa
+        """Convert seed bytes to address string."""
+        primitive = self.byte_to_primitive(seed)
+        return b58encode_check(primitive).decode("utf-8")
+
+    def bytes_to_hex_addr(self, seed: bytes) -> str:  # noqa
+        """Convert seed bytes to hex address string."""
+        primitive = self.byte_to_primitive(seed)
+        return primitive.hex()
+
+    def hex_to_addr(self, hexed: str) -> str:
+        """Convert hex string to address string."""
+        seed = bytes.fromhex(hexed)
+        return self.bytes_to_addr(seed)
+
+    def dec_to_addr(self, dec: int) -> str:
+        """Convert decimal integer to address string."""
+        if dec >= MAX_PRIVATE_KEY:
+            raise ValueError(f"\nInvalid Decimal Value for Private Key, Must be Less Than {MAX_PRIVATE_KEY}\n")
+        seed = int.to_bytes(dec, 32, 'big')
+        return self.bytes_to_addr(seed)
+
+    def hex_addr(self, hexed: str) -> str:
+        """Convert hex string to address string."""
+        return self.hex_to_addr(hexed)
+
+    def pvk_to_hex_addr(self, pvk: str) -> str:
+        """Convert hex string to Hex Tron Address string."""
+        seed = bytes.fromhex(pvk)
+        primitive = self.byte_to_primitive(seed)
+        return primitive.hex()
 
 
 class DigiByte:
