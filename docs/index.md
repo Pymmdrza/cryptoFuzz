@@ -7,6 +7,9 @@
 
 # CryptoFuzz
 
+[![Read the Docs](https://img.shields.io/readthedocs/cryptofuzz)](https://cryptofuzz.readthedocs.io/en/latest 'cryptofuzz documentation') [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Pymmdrza/cryptoFuzz/python-publish.yml)](https://github.com/Pymmdrza/cryptoFuzz) [![GitHub commit check runs](https://img.shields.io/github/check-runs/Pymmdrza/cryptoFuzz/main)](https://github.com/Pymmdrza/cryptoFuzz)  [![GitHub last commit](https://img.shields.io/github/last-commit/Pymmdrza/cryptoFuzz)](https://github.com/Pymmdrza/cryptoFuzz)  [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Pymmdrza/cryptoFuzz)](https://github.com/Pymmdrza/cryptoFuzz)  [![GitHub top language](https://img.shields.io/github/languages/top/Pymmdrza/cryptoFuzz)](https://github.com/Pymmdrza/cryptoFuzz)  [![PyPI - Downloads](https://img.shields.io/pypi/dm/cryptoFuzz)](https://pypi.org/project/cryptofuzz/)  [![Website](https://img.shields.io/website?url=https%3A%2F%2Fcryptofuzz.readthedocs.io&up_color=blue&style=plastic)](https://cryptofuzz.readthedocs.io/en/latest)
+
+
 ## Installing & Quick Use
 
 ### Windows
@@ -71,7 +74,24 @@ sudo chmod +x install.sh
 
 ---
 
-### Update `2024.09.07`:
+#### Update `2024.09.16`:
+
+Add Function for Convert Private Key To Hex Address
+TRON :
+[![](https://img.shields.io/badge/%20Update%20at-2024.09.16-009848?style=plastic)]()  [![](https://img.shields.io/badge/More%20Detail-0049AB?style=plastic)](/docs/tron.md)
+
+- `cryptofuzz.hd.Tron.bytes_to_addr`
+- `cryptofuzz.hd.Tron.bytes_to_hex_addr`
+- `cryptofuzz.hd.Tron.pvk_to_hex_addr`
+
+Add Function for Convert Decimal Number to Tron
+Address : [More Detail](https://github.com/Pymmdrza/cryptoFuzz/blob/main/docs/tron.md 'Tron Cryptofuzz - More detail')
+
+- `cryptofuzz.hd.Tron.dec_to_addr`
+
+---
+
+#### Update `2024.09.07`:
 
 Add Function for checking mnemonic standard type :
 
@@ -84,7 +104,9 @@ cn = Convertor()
 isValid = cn.is_mnemonic("abandon ... help abandon flower")  # Mnemonic 12/18/24
 ```
 
-### Update `2024.08.24`:
+---
+
+#### Update `2024.08.24`:
 
 Add Short Key (Mini Private Key) Converter for bitcoin wallet. (Mini Private
 Key : [More Detail's](https://en.bitcoin.it/wiki/Mini_private_key_format))
