@@ -14,7 +14,7 @@ from .utils import (
     QTUM,
     LTC,
     AXE,
-    KECCAK,
+    keccak,
     ecdsa,
     hashlib,
     MAX_PRIVATE_KEY
