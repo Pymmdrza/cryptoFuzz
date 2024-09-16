@@ -75,7 +75,7 @@ sudo chmod +x install.sh
 ---
 
 [![](https://img.shields.io/badge/%20Update%20at-2024.09.16-009848?style=plastic)]() 
-[![](https://img.shields.io/badge/More%20Detail-0049AB?style=plastic)](/tron.md)
+[![](https://img.shields.io/badge/More%20Detail-0049AB?style=plastic)](/docs/tron.md)
 
 Add Function for Convert Private Key To Hex Address
 TRON :
