@@ -17,7 +17,7 @@ from .utils import (
     AXE,
     ecdsa,
     hashlib,
-    MAX_PRIVATE_KEY,
+    MAX_PRIVATE_KEY
 )
 
 
@@ -29,44 +29,24 @@ class Bitcoin:
     def __int__(self):
         super().__init__()
 
-    def hex_addr(self, hexed: str, Type: str = "p2pkh") -> str:
+    def hex_addr(self, hexed: str, Type: str = 'p2pkh') -> str:
         """
         Convert Private key Hex To All Bitcoin Format Type Addresses, Type: `p2pkh`, `p2sh`, `p2wpkh`, `p2wsh`, `p2wpkh_p2sh`, `p2wsh_p2sh`.
-        :param hexed:
-        :param Type:
-        :rtype str:
-        :return address:
-
-
-        -----------------------------------------------------------------------------------------------
-
-        >>> btc = Bitcoin()
-        >>> privatekey = "0A97965.........0102F6A45517" # example Private Key
-        >>> p2pkh_addr = btc.hex_addr(privatekey, Type='p2pkh')
-        >>> p2sh_addr = btc.hex_addr(privatekey, Type='p2sh')
-        >>> p2wpkh_addr = btc.hex_addr(privatekey, Type='p2wpkh')
-        >>> p2wsh_addr = btc.hex_addr(privatekey, Type='p2wsh')
-        >>> p2wpkh_p2sh_addr = btc.hex_addr(privatekey, Type='p2wpkh_p2sh')
-        >>> p2wsh_p2sh_addr = btc.hex_addr(privatekey, Type='p2wsh_p2sh')
-
-        ---------------------------------------------------------------------------------------------
-
-
         """
         if is_valid_hex(hexed):
             hd: HD_W = HD_W(BTC)
             hd.from_private_key(hexed)
-            if Type == "p2pkh":
+            if Type == 'p2pkh':
                 return hd.p2pkh_address()
-            elif Type == "p2sh":
+            elif Type == 'p2sh':
                 return hd.p2sh_address()
-            elif Type == "p2wpkh":
+            elif Type == 'p2wpkh':
                 return hd.p2wpkh_address()
-            elif Type == "p2wsh":
+            elif Type == 'p2wsh':
                 return hd.p2wsh_address()
-            elif Type == "p2wpkh_p2sh":
+            elif Type == 'p2wpkh_p2sh':
                 return hd.p2wpkh_in_p2sh_address()
-            elif Type == "p2wsh_p2sh":
+            elif Type == 'p2wsh_p2sh':
                 return hd.p2wsh_in_p2sh_address()
             else:
                 return hd.p2pkh_address()
@@ -114,7 +94,7 @@ class Tron:
         # -- Public Key --
         pub_key = Keccak.digest()
         # -- Primitive Address Bytes --
-        primitive = b"\x41" + pub_key[-20:]
+        primitive = b'\x41' + pub_key[-20:]
         return primitive
 
     def bytes_to_addr(self, seed: bytes) -> str:  # noqa
@@ -135,10 +115,8 @@ class Tron:
     def dec_to_addr(self, dec: int) -> str:
         """Convert decimal integer to address string."""
         if dec >= MAX_PRIVATE_KEY:
-            raise ValueError(
-                f"\nInvalid Decimal Value for Private Key, Must be Less Than {MAX_PRIVATE_KEY}\n"
-            )
-        seed = int.to_bytes(dec, 32, "big")
+            raise ValueError(f"\nInvalid Decimal Value for Private Key, Must be Less Than {MAX_PRIVATE_KEY}\n")
+        seed = int.to_bytes(dec, 32, 'big')
         return self.bytes_to_addr(seed)
 
     def hex_addr(self, hexed: str) -> str:
@@ -186,7 +164,7 @@ class Dogecoin:
     def __int__(self):
         super().__init__()
 
-    def hex_addr(self, hexed: str, Type: str = "p2pkh") -> str:
+    def hex_addr(self, hexed: str, Type: str = 'p2pkh') -> str:
         """
         Generate Private key Hex Address To All Dogecoin Format Type Address , Type: `p2pkh`, `p2sh`.
 
@@ -212,9 +190,9 @@ class Dogecoin:
         if is_valid_hex(hexed):
             hd: HD_W = HD_W(DOGE)
             hd.from_private_key(hexed)
-            if Type == "p2pkh":
+            if Type == 'p2pkh':
                 return hd.p2pkh_address()
-            elif Type == "p2sh":
+            elif Type == 'p2sh':
                 return hd.p2sh_address()
             else:
                 return hd.p2pkh_address()
@@ -355,7 +333,7 @@ class Litecoin:
     def __int__(self):
         super().__init__()
 
-    def hex_addr(self, hexed: str, Type: str = "p2pkh") -> str:
+    def hex_addr(self, hexed: str, Type: str = 'p2pkh') -> str:
         """
 
         ------------------------------------------
@@ -386,17 +364,17 @@ class Litecoin:
         if is_valid_hex(hexed):
             hd: HD_W = HD_W(LTC)
             hd.from_private_key(hexed)
-            if Type == "p2pkh":
+            if Type == 'p2pkh':
                 return hd.p2pkh_address()
-            elif Type == "p2sh":
+            elif Type == 'p2sh':
                 return hd.p2sh_address()
-            elif Type == "p2wpkh":
+            elif Type == 'p2wpkh':
                 return hd.p2wpkh_address()
-            elif Type == "p2wsh":
+            elif Type == 'p2wsh':
                 return hd.p2wsh_address()
-            elif Type == "p2wpkh_p2sh":
+            elif Type == 'p2wpkh_p2sh':
                 return hd.p2wpkh_in_p2sh_address()
-            elif Type == "p2wsh_p2sh":
+            elif Type == 'p2wsh_p2sh':
                 return hd.p2wsh_in_p2sh_address()
             else:
                 return hd.p2pkh_address()
