@@ -17,7 +17,7 @@ def scrub_input(v: Union[str, bytes]) -> bytes:
 
 
 def b58encode_int(
-    i: int, default_one: bool = True, alphabet: bytes = ALPHABET
+        i: int, default_one: bool = True, alphabet: bytes = ALPHABET
 ) -> bytes:
     """
     Encode an integer using Base58
@@ -28,12 +28,12 @@ def b58encode_int(
     base = len(alphabet)
     while i:
         i, idx = divmod(i, base)
-        string = alphabet[idx:idx+1] + string
+        string = alphabet[idx:idx + 1] + string
     return string
 
 
 def b58encode(
-    v: Union[str, bytes], alphabet: bytes = ALPHABET
+        v: Union[str, bytes], alphabet: bytes = ALPHABET
 ) -> bytes:
     """
     Encode a string using Base58
@@ -67,8 +67,8 @@ def _get_base58_decode_map(alphabet: bytes,
 
 
 def b58decode_int(
-    v: Union[str, bytes], alphabet: bytes = ALPHABET, *,
-    autofix: bool = False
+        v: Union[str, bytes], alphabet: bytes = ALPHABET, *,
+        autofix: bool = False
 ) -> int:
     """
     Decode a Base58 encoded string as an integer
@@ -92,8 +92,8 @@ def b58decode_int(
 
 
 def b58decode(
-    v: Union[str, bytes], alphabet: bytes = ALPHABET, *,
-    autofix: bool = False
+        v: Union[str, bytes], alphabet: bytes = ALPHABET, *,
+        autofix: bool = False
 ) -> bytes:
     """
     Decode a Base58 encoded string
@@ -111,7 +111,7 @@ def b58decode(
 
 
 def b58encode_check(
-    v: Union[str, bytes], alphabet: bytes = ALPHABET
+        v: Union[str, bytes], alphabet: bytes = ALPHABET
 ) -> bytes:
     """
     Encode a string using Base58 with a 4 character checksum
@@ -123,8 +123,8 @@ def b58encode_check(
 
 
 def b58decode_check(
-    v: Union[str, bytes], alphabet: bytes = ALPHABET, *,
-    autofix: bool = False
+        v: Union[str, bytes], alphabet: bytes = ALPHABET, *,
+        autofix: bool = False
 ) -> bytes:
     """Decode and verify the checksum of a Base58 encoded string"""
 
@@ -146,15 +146,18 @@ def base58_encode(num):
         encoded = BASE58_ALPHABET[remainder] + encoded
     return encoded
 
+
 def base58_check_encode(payload, prefix=0x00):
     payload = bytes([prefix]) + payload
     checksum = sha256(sha256(payload).digest()).digest()[:4]
     return base58_encode(payload.hex() + checksum.hex())
 
+
 def base58encodeCheck(prefix, payload):
     s = prefix + payload
     raw = sha256(sha256(s).digest()).digest()[:4]
     return base58encode(int.from_bytes(s + raw, 'big'))
+
 
 def string_to_int(data):
     val = 0
@@ -165,6 +168,7 @@ def string_to_int(data):
     for (i, c) in enumerate(data[::-1]):
         val += (256 ** i) * c
     return val
+
 
 def encode_(data):
     enc = ""
@@ -178,9 +182,11 @@ def encode_(data):
     n = len(data) - len(data.lstrip(b"\0"))
     return BASE58_ALPHABET[0] * n + enc
 
+
 def check_encode(raw):
     check = sha256(sha256(raw).digest()).digest()[:4]
     return encode_(raw + check)
+
 
 def decode_(data):
     if isinstance(data, bytes):
@@ -211,6 +217,7 @@ def check_decode(e):
     else:
         return raw
 
+
 def base58encode(num):
     if num == 0:
         return BASE58_ALPHABET[0]
@@ -221,6 +228,7 @@ def base58encode(num):
     arr.reverse()
     return ''.join(arr)
 
+
 def base58decode(raw):
     decoded = 0
     for char in raw:
@@ -229,4 +237,3 @@ def base58decode(raw):
     landing = bytes_rep.lstrip(MAIN_DIGEST_RMD160)
     data_size = (len(raw) - len(landing))
     return MAIN_DIGEST_RMD160 * data_size + bytes_rep
-

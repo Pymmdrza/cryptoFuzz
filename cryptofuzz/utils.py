@@ -10,6 +10,7 @@ from functools import lru_cache as LR_CACHE
 from .bs58 import b58encode, b58decode, base58_check_encode, base58encodeCheck, base58decode, base58encode
 from hdwallet import HDWallet as HD_W
 from hdwallet.symbols import BTC, ETH, TRX, LTC, DOGE, DGB, BTG, RVN, QTUM, DASH, ZEC, BCH, AXE
+from Crypto.Hash import keccak
 from mnemonic import Mnemonic
 from .assest import (
     MAIN_DIGEST_RMD160,
