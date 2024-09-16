@@ -74,24 +74,25 @@ sudo chmod +x install.sh
 
 ---
 
-#### Update `2024.09.16`:
+[![](https://img.shields.io/badge/%20Update%20at-2024.09.16-009848?style=plastic)]() 
+[![](https://img.shields.io/badge/More%20Detail-0049AB?style=plastic)](/docs/tron.md)
 
 Add Function for Convert Private Key To Hex Address
 TRON :
-[![](https://img.shields.io/badge/%20Update%20at-2024.09.16-009848?style=plastic)]()  [![](https://img.shields.io/badge/More%20Detail-0049AB?style=plastic)](/docs/tron.md)
 
 - `cryptofuzz.hd.Tron.bytes_to_addr`
 - `cryptofuzz.hd.Tron.bytes_to_hex_addr`
 - `cryptofuzz.hd.Tron.pvk_to_hex_addr`
 
 Add Function for Convert Decimal Number to Tron
-Address : [More Detail](https://github.com/Pymmdrza/cryptoFuzz/blob/main/docs/tron.md 'Tron Cryptofuzz - More detail')
+Address :
 
 - `cryptofuzz.hd.Tron.dec_to_addr`
 
 ---
 
-#### Update `2024.09.07`:
+
+[![](https://img.shields.io/badge/%20Update%20at-2024.09.07-009848?style=plastic)]() 
 
 Add Function for checking mnemonic standard type :
 
@@ -106,7 +107,9 @@ isValid = cn.is_mnemonic("abandon ... help abandon flower")  # Mnemonic 12/18/24
 
 ---
 
-#### Update `2024.08.24`:
+
+[![](https://img.shields.io/badge/%20Update%20at-2024.08.24-009848?style=plastic)]() 
+
 
 Add Short Key (Mini Private Key) Converter for bitcoin wallet. (Mini Private
 Key : [More Detail's](https://en.bitcoin.it/wiki/Mini_private_key_format))
