@@ -46,6 +46,7 @@ __all__ = [
     # Classes
     "Convertor",
     "Generator",
+    "keccak"
 
     # Blockchain-specific classes
     "Axe",
