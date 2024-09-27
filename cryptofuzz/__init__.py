@@ -14,6 +14,7 @@ from .hd import (
     Qtum,
     Ravencoin,
     Tron,
+    Ton,
     Zcash,
 )
 
@@ -59,5 +60,6 @@ __all__ = [
     "Qtum",
     "Ravencoin",
     "Tron",
+    "Ton",
     "Zcash"
 ]
