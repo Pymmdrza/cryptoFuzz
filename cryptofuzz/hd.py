@@ -4,7 +4,10 @@ from hashlib import (
     pbkdf2_hmac as _pbkdf2_hmac,
     sha256 as _sha256
 )
-from base64 import urlsafe_b64encode as _urlsafe_b64encode
+from base64 import (
+    urlsafe_b64encode as _urlsafe_b64encode,
+    urlsafe_b64decode as _urlsafe_b64decode
+)
 from .bs58 import b58encode_check
 from .utils import (
     re,
@@ -206,7 +209,7 @@ class Dogecoin:
         :type Type: str
         :rtype: str
         :return: str - address
-        
+
         """
 
         if is_valid_hex(hexed):
@@ -502,6 +505,40 @@ class Ton:
             crc = ((crc << 8) ^ CRC16_TAB[tbl_idx]) & 0xffff
         return crc.to_bytes(2, 'big')
 
+    @staticmethod
+    def _userFriendly_to_rawAddress(userFriendly_addr: str) -> str:
+        """Convert a user-friendly TON address to its raw format."""
+        # -- Check validity of Address Format (48 characters Base64)
+        pattern = re.compile(r"^[A-Za-z0-9_-]{48}$")
+        if not pattern.match(userFriendly_addr):
+            raise ValueError("Invalid user-friendly address format. Must be 48 characters Base64.")
+        # -- Decode the Base64 address to bytes
+        try:
+            # Handle both Base64 and Base64 URL-safe decoding
+            address_bytes = _urlsafe_b64decode(userFriendly_addr + '==')
+        except Exception as e:
+            raise ValueError(f"Failed to decode user-friendly address: {e}")
+
+        # -- Extract fields from the address
+        if len(address_bytes) != 36:
+            raise ValueError("Invalid user-friendly address length. Must be 36 bytes after decoding.")
+        # Extract fields from the address
+        tag_byte = address_bytes[0]
+        workchain_byte = address_bytes[1]
+        account_id = address_bytes[2:34]  # 32 bytes
+        checksum = address_bytes[34:36]  # CRC16 checksum
+        # -- Validate the CRC16 checksum
+        calculated_checksum = Ton.cal_crc16(address_bytes[:34])
+        if checksum != calculated_checksum:
+            raise ValueError("Invalid CRC16 checksum for the given address.")
+        # -- Convert `workchain_byte` to `workchain_id`
+        workchain_id = -1 if workchain_byte == 0xff else 0
+        # -- Convert the account ID to a hexadecimal string
+        account_id_hex = account_id.hex().upper()
+        # -- Create the final raw address in the format [workchain_id]:[account_id]
+        return f"{workchain_id}:{account_id_hex}"
+
+
     def publickey_to_address(self, publickey: bytes, bounceable: bool = True) -> str:
         """
         Convert public key to a user-friendly TON address.
@@ -558,3 +595,9 @@ class Ton:
             raise ValueError(f"\nInvalid Decimal Value for Private Key, Must be Less Than {MAX_PRIVATE_KEY}\n")
         pvk = "%064x" % dec
         return self.privatekey_to_address(pvk, bounceable)
+
+    def raw_address(self, address: str) -> str:
+        """
+        Convert address string to user-friendly TON address.
+        """
+        return self._userFriendly_to_rawAddress(address)
