@@ -71,6 +71,19 @@ bash install.sh
 ```bash
 sudo chmod +x install.sh
 ```
+---
+
+[![](https://img.shields.io/badge/%20Update%20at-2024.09.28-009848?style=plastic)]() 
+[![](https://img.shields.io/badge/More%20Detail-0049AB?style=plastic)](https://cryptofuzz.readthedocs.io/en/latest/ton/ 'cryptoFuzz - Ton')
+
+Add New Class For Generate and Convert TON Address.
+
+- `cryptofuzz.Ton`
+- `cryptofuzz.Ton.privatekey_to_address`
+- `cryptofuzz.Ton.mnemonic_to_address`
+- `cryptofuzz.Ton.decimal_to_address`
+- `cryptofuzz.Ton.publickey_to_address`
+- `cryptofuzz.Ton.raw_address`
 
 ---
 
