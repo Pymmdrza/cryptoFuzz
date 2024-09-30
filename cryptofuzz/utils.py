@@ -147,7 +147,7 @@ class Convertor:
 
         """
         seed = self.mne_to_seed(mnemonic)
-        return self.bytes_to_hex(seed)
+        return self.bytes_to_hex(seed)[:64]
 
     # --- Mnemonic To WIF
     def mne_to_wif(self, mnemonic, compress: bool = False):
