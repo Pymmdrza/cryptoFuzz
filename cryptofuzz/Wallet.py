@@ -624,7 +624,7 @@ def Mnemonic_To_Bytes(mnemonic: str) -> bytes:
 # ----------------------------------------------------------
 def Mnemonic_To_PrivateKey(mnemonic: str) -> str:
     seed = convertor.mne_to_seed(mnemonic=mnemonic)
-    return convertor.bytes_to_hex(seed=seed)
+    return convertor.bytes_to_hex(seed=seed)[:64]
 
 
 # ----------------------------------------------------------
