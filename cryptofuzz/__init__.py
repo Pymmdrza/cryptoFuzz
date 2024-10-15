@@ -2,6 +2,7 @@
 
 # Import modules
 from .utils import Convertor, Generator
+from .mnemonic import Mnemonic
 from .hd import (
     Axe,
     Bitcoin,
@@ -47,6 +48,7 @@ __all__ = [
     # Classes
     "Convertor",
     "Generator",
+    "Mnemonic",
 
     # Blockchain-specific classes
     "Axe",
