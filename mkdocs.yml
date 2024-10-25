@@ -3,7 +3,7 @@ site_author: 'Pymmdrza@gmail.com'
 repo_url: 'https://github.com/Pymmdrza/cryptoFuzz'
 edit_uri: '?query=root/path/docs/'
 site_description: 'cryptoFuzz a fast and easy Python package for generating private keys and mnemonics, converting seeds, binary, and decimals.'
-site_url: 'https://pymmdrza.gitbook.io/cryptoFuzz'
+site_url: 'https://cryptofuzz.readthedocs.io'
 copyright: 'Copyright © 2023, Pymmdrza'
 
 nav:
@@ -15,12 +15,12 @@ nav:
     - Bug Tracking: 'https://github.com/Pymmdrza/cryptoFuzz/issues'
     - Pull Requests: 'https://github.com/Pymmdrza/cryptoFuzz/pulls'
     - Source: 'https://github.com/Pymmdrza/cryptoFuzz'
-    - Example: 'https://github.com/Pymmdrza/cryptoFuzz/tree/main/Example'
-    - From Private Key: 'https://github.com/Pymmdrza/cryptoFuzz/blob/main/Example/PrivateKey.py'
-    - From Mnemonic: 'https://github.com/Pymmdrza/cryptoFuzz/blob/main/Example/Mnemonic.py'
-    - From Decimal: 'https://github.com/Pymmdrza/cryptoFuzz/blob/main/Example/Decimal.py'
-    - From Wif: 'https://github.com/Pymmdrza/cryptoFuzz/blob/main/Example/Wif.py'
-    - Mmdrza.Com: 'https://mmdrza.com'
+    - Example: 'example'
+    -- Decimal: 'example/#decimal'
+    -- Mnemonic: 'example/#mnemonic'
+    -- Private Key: 'example/#private-key'
+    -- Wif: 'example/#wif'
+    - Programmer And Owner: 'https://mmdrza.com'
 validation:
   nav:
     omitted_files: info
