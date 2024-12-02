@@ -4,12 +4,10 @@
 ```python
 from cryptofuzz import Mnemonic
 
-# -- Mnemonic Object
-mnemonic = Mnemonic("english")
+mne = Mnemonic()
 
-# -- Generate Mnemonic With Standard Size
-generate_mnemonic = mnemonic.generate(strength=128)
+words = "abort able abandon ability absent absent attitude audio avoid baby badge bacon bag ban banana bank banner bar base basis bat battle battle bus busy buy buy bus"
 
-# -- Check Valid Mnemonic
-is_mnemonic = mnemonic.check(generate_mnemonic)
+seed = mne.to_seed(words)
+
 ```
