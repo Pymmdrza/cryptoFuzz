@@ -100,9 +100,9 @@ class Convertor:
 
     # --- Mnemonic ---
     def mne_to_seed(self, mnemonic, password=""):
-        salt = ("mnemonic" + password).encode('utf-8')
-        seed = hashlib.pbkdf2_hmac('sha512', mnemonic.encode('utf-8'), salt, 2048)
-        return seed[:32]
+        """Convert Mnemonic String to Bytes (seed)"""
+        mne = Mnemonic('english')
+        return mne.to_seed(mnemonic, password)[:32]
 
     # --- Mnemonic To Bytes
     def mne_to_bytes(self, mnemonic):
