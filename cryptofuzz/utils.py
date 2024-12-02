@@ -11,7 +11,7 @@ from .bs58 import b58encode, b58decode, base58_check_encode, base58encodeCheck, 
 from hdwallet import HDWallet as HD_W
 from hdwallet.symbols import BTC, ETH, TRX, LTC, DOGE, DGB, BTG, RVN, QTUM, DASH, ZEC, BCH, AXE
 from Crypto.Hash import keccak
-from mnemonic import Mnemonic
+from .bip39 import Mnemonic
 from .assest import (
     MAIN_DIGEST_RMD160,
     MAX_PRIVATE_KEY,
