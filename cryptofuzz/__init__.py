@@ -2,7 +2,7 @@
 
 # Import modules
 from .utils import Convertor, Generator
-from .mnemonic import Mnemonic
+from .bip39 import Mnemonic
 from .hd import (
     Axe,
     Bitcoin,
@@ -20,7 +20,7 @@ from .hd import (
 )
 
 # Metadata
-__version__ = "17.3.3"
+__version__ = "17.3.6"
 __license__ = "MIT"
 __author__ = "Mohammadreza (MMDRZA)"
 __email__ = "PyMmdrza@gmail.com"
@@ -39,6 +39,7 @@ __all__ = [
     # Core modules
     "Wallet",
     "assest",
+    "bip39",
     "block",
     "bs58",
     "utils",
