@@ -101,6 +101,6 @@ jobs:
           Check the latest features and updates in this release.
         files: |
           dist/cryptofuzz-${{ env.NEW_VERSION }}.tar.gz
-          dist/cryptofuzz-${{ env.NEW_VERSION }}-py3-none-any.whl
+          dist/CryptoFuzz-${{ env.NEW_VERSION }}-py3-none-any.whl
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
