@@ -111,7 +111,7 @@ jobs:
           # or 
           pip install cryptofuzz==${{ env.NEW_VERSION }}
           ```
-          #### upgrade : `pip install cryptofuzz --upgrade`
+          ##### upgrade : `pip install cryptofuzz --upgrade`
 
           ---
           
@@ -123,13 +123,18 @@ jobs:
           pip3 install cryptofuzz==${{ env.NEW_VERSION }}
           ```
 
-          #### upgrade : `pip3 install cryptofuzz --upgrade`
+          ##### upgrade : `pip3 install cryptofuzz --upgrade`
 
           ---
+
+          - [Documentation](https://cryptofuzz.readthedocs.io/)
+          - [PyPi Package](https://pypi.org/project/CryptoFuzz/${{ env.NEW_VERSION }}/
+          - [PyPi History](https://pypi.org/project/CryptoFuzz/${{ env.NEW_VERSION }}/#history)
+          - [Description Package](https://pypi.org/project/CryptoFuzz/${{ env.NEW_VERSION }}/#description)
+          - [Use Git Clone](https://github.com/Pymmdrza/cryptoFuzz#git)
           
           Programmer and Owner : @Pymmdrza
-
-          Official Website : [Mmdrza.Com](https://mmdrza.com)  |  Support : [Mmdrza.support](https://mmdrza.support)
+          
         files: |
           dist/cryptofuzz-${{ env.NEW_VERSION }}.tar.gz
           dist/CryptoFuzz-${{ env.NEW_VERSION }}-py3-none-any.whl
