@@ -38,7 +38,8 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+   
+    if: github.event_name == 'workflow_dispatch'
 
     steps:
     - name: Checkout repository
@@ -88,3 +89,27 @@ jobs:
         TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
       run: |
         twine upload dist/*
+    
+    - name: Create CryptoFuzz Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: "v${{ steps.bump_version.outputs.new_version }}"
+        release_name: "Release v${{ steps.bump_version.outputs.new_version }}"
+        body: |
+          New version of cryptoFuzz has been released!
+          Check the latest features and updates in this release.
+        draft: false
+        prerelease: false
+
+    - name: Upload Build to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: dist/cryptoFuzz-*.tar.gz
+        asset_name: cryptoFuzz-${{ steps.bump_version.outputs.new_version }}.tar.gz
+        asset_content_type: application/gzip
