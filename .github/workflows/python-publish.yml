@@ -95,12 +95,12 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         tag_name: "v${{ env.NEW_VERSION }}"
-        release_name: "Release v${{ env.NEW_VERSION }}"
+        name: "Release v${{ env.NEW_VERSION }}"
         body: |
           New version of cryptoFuzz has been released!
           Check the latest features and updates in this release.
         files: |
-          dist/cryptoFuzz-${{ env.VERSION }}.tar.gz
-          dist/cryptoFuzz-${{ env.VERSION }}-py3-none-any.whl
+          dist/cryptoFuzz-${{ env.NEW_VERSION }}.tar.gz
+          dist/cryptoFuzz-${{ env.NEW_VERSION }}-py3-none-any.whl
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
