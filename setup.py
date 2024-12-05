@@ -6,7 +6,6 @@ import os
 
 PACK_NAME = "CryptoFuzz"
 PACK_DESCRIPTION = "Generated and Converted Keys with any Type Foundation from Private Key [WIF Hexed Mnemonic and Binary Bytes seed] in Python"
-PACK_VERSION = "4.0.3"
 PACK_LICENSE = "MIT"
 PACK_AUTHOR = "Mohammadreza (Mmdrza.Com)"
 PACK_EMAIL = "Pymmdrza@gmail.com"
@@ -15,8 +14,8 @@ PACK_ISSUES = 'https://github.com/Pymmdrza/cryptoFuzz/issues'
 PACK_DOCS_URL = 'https://cryptofuzz.readthedocs.io/'
 PACK_TYPE_README = 'text/markdown'
 PACK_REQUIRES_INSTALL = [
-    'hdwallet>=2.2.1',
-    'ecdsa>=0.18.0'
+    'hdwallet',
+    'ecdsa'
 ]
 PACK_KEYWORD = ["CryptoFuzz", "Wif", "Mnemonic", "Binary", "seed", "Foundation", "Private", "Key", "HEX", "Mnemonic",
                 "Binary", "Bytes", "bitcoin", "ethereum", "tron", "dogecoin", "zcash", "digibyte", "bitcoin gold",
