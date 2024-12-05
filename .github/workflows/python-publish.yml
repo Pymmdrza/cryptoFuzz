@@ -100,7 +100,7 @@ jobs:
           New version of cryptoFuzz has been released!
           Check the latest features and updates in this release.
         files: |
-          dist/cryptoFuzz-${{ env.NEW_VERSION }}.tar.gz
-          dist/cryptoFuzz-${{ env.NEW_VERSION }}-py3-none-any.whl
+          dist/cryptofuzz-${{ env.NEW_VERSION }}.tar.gz
+          dist/cryptofuzz-${{ env.NEW_VERSION }}-py3-none-any.whl
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
