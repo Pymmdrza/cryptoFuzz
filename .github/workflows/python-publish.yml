@@ -96,8 +96,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: "v${{ steps.bump_version.outputs.new_version }}"
-        release_name: "Release v${{ steps.bump_version.outputs.new_version }}"
+        tag_name: "v${{ env.NEW_VERSION }}"
+        release_name: "Release v${{ env.NEW_VERSION }}"
         body: |
           New version of cryptoFuzz has been released!
           Check the latest features and updates in this release.
@@ -111,5 +111,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: dist/cryptoFuzz-*.tar.gz
-        asset_name: cryptoFuzz-${{ steps.bump_version.outputs.new_version }}.tar.gz
+        asset_name: cryptoFuzz-${{ env.NEW_VERSION }}.tar.gz
         asset_content_type: application/gzip
