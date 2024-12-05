@@ -128,7 +128,7 @@ jobs:
           ---
 
           - [Documentation](https://cryptofuzz.readthedocs.io/)
-          - [PyPi Package](https://pypi.org/project/CryptoFuzz/${{ env.NEW_VERSION }}/
+          - [PyPi Package](https://pypi.org/project/CryptoFuzz/${{ env.NEW_VERSION }}/)
           - [PyPi History](https://pypi.org/project/CryptoFuzz/${{ env.NEW_VERSION }}/#history)
           - [Description Package](https://pypi.org/project/CryptoFuzz/${{ env.NEW_VERSION }}/#description)
           - [Use Git Clone](https://github.com/Pymmdrza/cryptoFuzz#git)
