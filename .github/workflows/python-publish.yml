@@ -97,19 +97,19 @@ jobs:
         tag_name: "v${{ env.NEW_VERSION }}"
         name: "Release v${{ env.NEW_VERSION }}"
         body: |
-          CryptoFuzz New Release `{{ env.NEW_VERSION }}`
+          ## CryptoFuzz New Release `${{ env.NEW_VERSION }}`
 
-          New version of cryptoFuzz has been released!
-          Check the latest features and updates in this release.
+          > [!NOTE] 
+          > New version of cryptoFuzz has been released `v${{ env.NEW_VERSION }}`, Check the latest features and updates in this release.
           
-          install and use CryptoFuzz with pip and pip3 follow command :
+          install and use CryptoFuzz with `pip` and `pip3` follow command :
           
           ### Windows
           
           ```bash
           pip install cryptofuzz
           # or 
-          pip install cryptofuzz=={{ env.NEW_VERSION }}
+          pip install cryptofuzz==${{ env.NEW_VERSION }}
           ```
           #### upgrade : `pip install cryptofuzz --upgrade`
 
@@ -120,7 +120,7 @@ jobs:
           ```bash
           pip3 install cryptofuzz
           # or 
-          pip3 install cryptofuzz=={{ env.NEW_VERSION }}
+          pip3 install cryptofuzz==${{ env.NEW_VERSION }}
           ```
 
           #### upgrade : `pip3 install cryptofuzz --upgrade`
@@ -129,7 +129,7 @@ jobs:
           
           Programmer and Owner : @Pymmdrza
 
-          Official Website : Mmdrza.Com
+          Official Website : [Mmdrza.Com](https://mmdrza.com)  |  Support : [Mmdrza.support](https://mmdrza.support)
         files: |
           dist/cryptofuzz-${{ env.NEW_VERSION }}.tar.gz
           dist/CryptoFuzz-${{ env.NEW_VERSION }}-py3-none-any.whl
