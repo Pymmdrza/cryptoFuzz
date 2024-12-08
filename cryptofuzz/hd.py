@@ -13,7 +13,6 @@ from .utils import (
     re,
     HD_W,
     BTC,
-    ETH,
     TRX,
     DGB,
     DOGE,
@@ -110,11 +109,21 @@ class Ethereum:
         :return: str - address
         """
         if is_valid_hex(hexed):
-            hd: HD_W = HD_W(ETH)
-            hd.from_private_key(hexed)
-            return hd.p2pkh_address()
+            keybytes = bytes.fromhex(hexed)
+            sk = ecdsa.SigningKey.from_string(keybytes, curve=ecdsa.SECP256k1)
+            key = sk.get_verifying_key()
+            KEY = key.to_string()
+            Keccak = keccak.new(digest_bits=256)
+            Keccak.update(KEY)
+            pub_key = Keccak.digest()
+            primitive_addr = b'\4' + pub_key[-20:]
+            hashaddr = primitive_addr.hex()
+            chkSum = hashaddr[0:2]
+            if hashaddr[0:2] == "04":
+                return "0x" + hashaddr[2:]
         else:
             ValueError("hex format invalid check again.[format: hex][64 length]")
+
 
 
 class Tron:
@@ -537,7 +546,6 @@ class Ton:
         account_id_hex = account_id.hex().upper()
         # -- Create the final raw address in the format [workchain_id]:[account_id]
         return f"{workchain_id}:{account_id_hex}"
-
 
     def publickey_to_address(self, publickey: bytes, bounceable: bool = True) -> str:
         """
